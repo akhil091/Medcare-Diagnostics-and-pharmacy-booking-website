@@ -1,0 +1,302 @@
+{% extends 'basic.html' %}
+{% block content %}
+{% load static %}
+<div class="breadcrumb-area breadcrumb-area-padding-2 bg-gray-2">
+    <div class="custom-container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                    <a href="/home">Home</a>
+                </li>
+                <li>
+                    <a href="/doctors">Doctor</a>
+                </li>
+                <li class="active">Book Appointment</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="product-details-area padding-30-row-col pt-75 pb-55" id="firstform">
+        <div class="custom-container">
+            <div class="row flex-row-reverse">
+                <div class="col-lg-5 col-md-12">
+                    <div class="sidebar-wrapper sidebar-wrapper-ml1">
+                        <div class="sidebar-widget sidebar-widget-wrap sidebar-widget-padding-1 mb-20">
+                            <h4 class="sidebar-widget-title">Book In-clinic Appointment </h4>
+                            <span style="color:#082d86;"> &#8377; {{product.Fee}} </span>
+                            <div class="product-details-wrap-bottom ">
+                            <p class="sidebar-widget-title">Select Date and Time Slot:</p>
+                                <div class="tab-style-1 nav mb-20">
+                                    {% for i in product.get_doc_timing %}
+                                    <a href="#timeslot" data-toggle="tab" id="{{i}}" class="datebtn"> {{i|slice:":10"}}</a>
+                                    {% endfor %}
+                                </div>
+                                <div class="tab-content">
+                                    <div id="timeslot" class="tab-pane active">
+                                        <div class="sidebar-tag">
+                                            <button id="{{product.get_avaliablity}}" class="timebtn"><a>{{product.get_avaliablity}}</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-style-1 pt-20">
+                                <a class="font-size-14 btn-1-padding-2" id="booktime">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-10 col-md-10 col-12 col-sm-10 mb-30" id="doctors_profile">
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="checkout-area pt-75 pb-75" id="checkoutform" style="display:none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="billing-info-wrap padding-20-row-col pt-20">
+                            <h3>Enter Patient Details</h3>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>First Name *</label>
+                                        <input type="text" placeholder="First Name" id="firstname" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>Last Name *</label>
+                                        <input type="text" placeholder="Last Name" id="lastname" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>Email Address *</label>
+                                        <input type="text" placeholder="Email" id="email" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>Phone*</label>
+                                        <input type="text" placeholder="Phone" id="phone" maxlength="10" minlength="10" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>Age *</label>
+                                        <input type="number" placeholder="Age" id="age" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="customer-zone mb-30">
+                            <p class="cart-page-title">Have a coupon? <a class="checkout-click3" href="#">Click here to enter your code</a></p>
+                            <div class="checkout-login-info3 input-style">
+                                <form action="#">
+                                    <input type="text" placeholder="Coupon code">
+                                    <button type="submit"><i class="fal fa-gift"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="payment-details-area">
+                            <h4>Payment:</h4>
+                            <div class="payment-method">
+                                {% comment %} <div class="sin-payment payment-selected mb-20">
+                                    <input id="payment_method_1" class="input-radio" type="radio" value="cheque" checked="checked" name="payment_method">
+                                    <label for="payment_method_1">
+                                        <span>
+                                        <img class="nomal-img" src="{% static 'images/icon-img/direct-bank.png' %}" alt="">
+                                        <img class="active-img" src="{% static  'images/icon-img/direct-bank-active.png' %}" alt="">
+                                    </span>
+                                        Pay Now <h5 class="pl-10">Make your payment directly via Netbanking, PayTm, UPI ID or via Credit/Debit Card</h5>
+                                    </label>
+                                </div> {% endcomment %}
+                                <div class="sin-payment mb-20">
+                                    <input id="payment-method-3" class="input-radio" type="radio" value="cheque" name="payment_method">
+                                    <label for="payment-method-3">
+                                        <span>
+                                        <img class="nomal-img" src="{% static 'images/icon-img/cash-on-delivery.png' %}" alt=""">
+                                        <img class="active-img" src="{% static 'images/icon-img/cash-on-delivery-active.png' %}" alt=""">
+                                    </span>
+                                        Pay at Clinic <h5 class="pl-10"> Make your payment by cash/card at Clinic</h5>
+                                    </label>
+                                </div>
+                                <div class="btn-style-1 pt-10" style="text-align:center;">
+                                    <a class="font-size-16 btn-1-padding-4" id="submitappointment">Confirm Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12">
+                        <div class="order-summary" id="summary">
+                            {% comment %} <div class="order-summary-title">
+                                <h3>Appointment summary</h3>
+                            </div>
+                            <div class="order-summary-middle">
+                                <ul>
+                                    <li>Doctor <h4><a href="/doctordetails">Dr. Doctor Name</a></h4>
+                                    </li>
+                                    <li>Appointment Date & Time <h4 id="datetimetext"></h4>
+                                    </li>
+
+                                    <li>Appointment Fee <h4>&#8377; 180.00</h4>
+                                    </li>
+                                    <li>Booking Charges<h4><span>No Fee</span><span class="price"> &#8377; 0.00</span></h4>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="order-summary-bottom">
+                                <h4>Total <span>&#8377; 185.00</span></h4>
+                            </div> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="login-register-area pt-75 pb-75 " id="confirmedicon" style="display:none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                            <img src="{% static 'icons/undraw_awesome_rlvy.svg' %}"  style="display: block;margin-left: auto;margin-right: auto;width: 20%;" alt="svg" >
+                            <h3 class="pt-20 text-center">Awesome!! Your In-clinic Appointment is booked.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<script>
+function profile(order){
+    return('<div class="single-product-wrap bg-gray-2"><div class="row"><div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-8"><div class="product-img-action-wrap mb-10"><div class="product-img product-img-zoom"><a href="javascript:void(0);"><img class="default-img" src="'+ order.Profile_pic +'" alt="doctor_pic"></a></div></div></div><div class="col-xl-8 col-lg-8 col-md-8 col-sm-8"><div class="product-content-wrap"><div class="product-category"><a href="javascript:void(0);">'+ order.Specialization.name +' </a></div><h1><a href="javascript:void(0);">'+ order.Name +'</a></h1><p style="color:#082d86;" class="mb-0 mt-20"> '+ order.Qualification +' </p><p style="color:#082d86;"> '+ order.Overall_Exp +' years experience</p><div class="product-price">Consultation Timing:<span class="new-price"> '+ order.week_timing +' </span></div><div class="product-price">Consultation Fee:<span class="new-price"> &#8377; '+ order.Fee +' </span></div><br><p class="dummy">'+ order.Description +'</p></div><div class="btn-style-1 pt-10"></div></div></div></div>');
+}
+function summary(order){
+    return('<div class="order-summary-title"><h3>Appointment summary</h3></div><div class="order-summary-middle"><ul><li>Doctor <h4><a href="/doctordetails/'+ order.id +'">'+ order.Name +'</a></h4> </li><li>Appointment Date & Time <h4 id="datetimetext"></h4></li><li>Appointment Fee <h4>&#8377; '+ order.Fee +'</h4></li><li>Booking Charges<h4><span>No Fee</span><span class="price"> &#8377; 0.00</span></h4></li></ul></div><div class="order-summary-bottom"><h4>Total <span>&#8377;'+ order.Fee +'</span></h4></div>');
+}
+</script>
+
+<script>
+$(document).ready(function(){
+    $("#cartlink").on("click", function(e){
+      var username = getCookie("bToken");
+      if (username != "") {
+        window.location="/cart";
+      }
+      else{
+          $("#loginmodalbox").modal('show');
+      }
+    });
+
+    var datetime;
+    $("#booktime").on("click", function(e){
+        var username = getCookie("bToken");
+
+        console.log("booktime");
+        var date =$('.datebtn.active').text();
+        var time =$('.timebtn.timeactive').text();
+        datetime =  date + " " + time;
+        console.log(date);
+        console.log(time);
+        if ((date != "") && (time != "")){
+
+        if (username != ""){
+            $("#checkoutform").show();
+            $("#firstform").hide();
+            document.getElementById("datetimetext").innerHTML = datetime;
+        }
+        else{
+            $("#loginmodalbox").modal('show');
+        }
+        }
+        else{
+            alert("Select Date and Time Slot!!");
+        }
+    });
+
+    var url = window.location.pathname;
+    var id = url.substring(url.lastIndexOf('/') + 1);
+    console.log(id);
+    console.log(datetime);
+    $.ajax({
+        type: "GET",
+        url: urllink + "/doctor/" + id,
+        dataType: "JSON",
+        success: function (data){
+            document.getElementById("doctors_profile").innerHTML += profile(data);
+            document.getElementById("summary").innerHTML += summary(data);
+        }
+    });
+
+    function getCookie() {
+        var name = "bToken=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    $("#submitappointment").on("click", function(e){
+        console.log("sublittt");
+        e.preventDefault();
+        console.log(datetime);
+        console.log(id);
+        var fdata = new FormData()
+        fdata.append('First_Name',$('#firstname').val());
+        fdata.append('Last_Name',$('#lastname').val());
+        fdata.append('Phone',$('#phone').val());
+        fdata.append('Email',$('#email').val());
+        fdata.append('Age',$('#age').val());
+        fdata.append('date',datetime);
+        fdata.append('id',id);
+        $.ajax({
+            url  : urllink + "/doctor",
+            type : "POST",
+            data : fdata,
+            beforeSend: function(request) {
+                    request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+                },
+            processData: false,
+            contentType: false,
+            success:function(Response){
+                console.log('success',Response);
+                $("#confirmedicon").show();
+                $("#checkoutform").hide();
+            },
+            error: function (Response) {
+                $("#loginmodalbox").modal('show');
+            }
+        });
+    });
+});
+</script>
+
+<script src="{% static 'js/readMoreJS.js' %}"></script>
+<script>
+		$readMoreJS.init({
+			target: '.dummy',
+			numOfWords: 15,
+			toggle: true,
+			moreLink: 'Read more <i class="fa fa-long-arrow-right"></i>',
+			lessLink: 'Read less <i class="fa fa-long-arrow-left"></i>'
+		});
+
+// Add active class to the current button (highlight it)
+$('.timebtn').click(function() {
+    if(!$(this).hasClass('timeactive'))
+    {
+        $(this).addClass('timeactive');
+    }else{
+        $(this).removeClass('timeactive');
+    }
+});
+
+</script>
+{% endblock %}

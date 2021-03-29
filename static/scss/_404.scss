@@ -1,0 +1,104 @@
+/*-------- 20. 404 style ---------*/
+
+.error-content {
+    .error-logo {
+        margin: 0 0 40px;
+        a {
+            display: block;
+            img {
+                width: 166px;
+            }
+        }
+        @media #{$xs-layout} {
+            margin: 0 0 20px;
+        }
+    }
+    .error-img {
+        img {
+            max-width: 100%;
+        }
+    }
+    h2 {
+        font-size: 40px;
+        font-weight: 500;
+        margin: 22px 0 26px;
+        @media #{$xs-layout} {
+            font-size: 22px;
+            line-height: 32px;
+            margin: 12px 0 10px;
+        }
+    }
+    p {
+        font-size: 18px;
+        color: #444;
+        line-height: 1.67;
+        margin: 0px 0 60px;
+        @media #{$lg-layout} {
+            margin: 0px 0 30px;
+        }
+        @media #{$md-layout} {
+            margin: 0px 80px 30px;
+        }
+        @media #{$xs-layout} {
+            font-size: 17px;
+            line-height: 1.57;
+            margin: 0px 0 20px;
+        }
+    }
+    .search-style-4 {
+        margin: 0 50px;
+        @media #{$xs-layout} {
+            margin: 0 0px;
+        }
+        form {
+            position: relative;
+            input {
+                background-color: #f8f8f8;
+                border: 1px solid #f8f8f8;
+                color: #444;
+                height: 48px;
+                font-size: 15px;
+                border-radius: 26px;
+                padding: 3px 150px 3px 20px;
+                @media #{$xs-layout} {
+                    padding: 3px 140px 3px 20px;
+                }
+                &::-moz-input-placeholder {
+                    color: #444;
+                    opacity: 1;
+                }
+                &::-webkit-input-placeholder {
+                    color: #444;
+                    opacity: 1;
+                }
+                &:focus {
+                    border: 1px solid $theme-color-blue;
+                }
+            }
+            button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+                font-size: 15px;
+                font-weight: 700;
+                border: none;
+                height: 100%;
+                color: $white;
+                padding: 5px 41px;
+                border-radius: 26px;
+                background-color: $theme-color-blue;
+                @media #{$xs-layout} {
+                    padding: 5px 35px;
+                }
+                &:hover {
+                    background-color: $theme-color-red;
+                }
+            }
+        }
+    }
+}
+
+
+
+

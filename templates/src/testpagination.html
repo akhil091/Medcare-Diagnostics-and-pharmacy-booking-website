@@ -1,0 +1,59 @@
+<div class="shop-topbar-wrapper">
+                            <div class="totall-product">
+                                <p> We found <span>51</span> items available for you</p>
+                            </div>
+                            <div class="sort-by-product-area">
+                                <div class="sort-by-product-wrap">
+                                    <div class="sort-by">
+                                        <span><i class="far fa-align-left"></i>Sort by:</span>
+                                    </div>
+                                    <div class="sort-by-dropdown-wrap">
+                                        <span> Default <i class="far fa-angle-down"></i></span>
+                                    </div>
+                                </div>
+                                <div class="sort-by-dropdown">
+                                    <ul>
+                                        <li><a class="active filter" id="default" >Default</a></li>
+                                        <li><a class="filter" id="a_z">A to Z</a></li>
+                                        <li><a class="filter" id="z_a">Z to A</a></li>
+                                        <li><a class="filter" id="l_h">Price: low to high</a></li>
+                                        <li><a class="filter" id="h_l">Price: high to low</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+    $(".filter").on("click", function(e){
+    document.getElementById("test_list").innerHTML = "";
+    if (this.id!= "default"){
+    var dataObj = {};
+    dataObj[this.id] = true;
+    $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:8000/lab/data",
+        data: { 'test':true , dataObj },
+        dataType: "JSON",
+        success: function (data) {
+            for(var i=0; i<data.length; i++){
+                document.getElementById("test_list").innerHTML += test(data[i]);
+            }
+        }
+    });
+    }
+    else{
+        $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:8000/lab/data",
+        dataType: "JSON",
+        data:{'test' : true},
+        success: function (data) {
+            for(var i=0; i<data.length; i++){
+                document.getElementById("test_list").innerHTML += test(data[i]);
+            }
+        }
+    });
+    }
+});
+    });
+</script>

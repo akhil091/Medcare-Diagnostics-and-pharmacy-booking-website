@@ -1,0 +1,136 @@
+/*-------- 6. Section title style ---------*/
+
+.section-title-timer-wrap {
+	display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    transform: translateY(-18px);
+    padding: 0px 30px 0 30px;
+    background-color: $white;
+    @media #{$md-layout} {
+        padding: 0px 25px 0 25px;
+    }
+    @media #{$xs-layout} {
+        //display: block;
+        transform: translateY(-12px);
+        padding: 0px 10px 0 10px;
+    }
+    @media #{$sm-layout} {
+        display: inline-flex;
+    }
+}
+
+.section-title-btn-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    @media #{$xs-layout} {
+        &.mb-35 {
+            margin-bottom: 25px;
+        }
+        &.st-btn-wrap-xs-center {
+            justify-content: center;
+        }
+    }
+}
+
+.section-title-1 {
+    h2 {
+        font-size: 30px;
+        font-weight: 500;
+        margin: 0;
+        line-height: 1;
+        @media #{$md-layout} {
+            &.section-title-hm2 {
+                font-size: 22px;
+            }
+        }
+        @media #{$xs-layout} {
+            font-size: 20px;
+        }
+        @media #{$sm-layout} {
+            font-size: 22px;
+        }
+    }
+    @media #{$xs-layout} {
+        &.mb-30 {
+            margin-bottom: 20px;
+        }
+        &.mb-40 {
+            margin-bottom: 30px;
+        }
+    }
+    &.section-title-hm2 {
+        @media #{$md-layout} {
+            h2 {
+                font-size: 22px;
+            }
+        }
+        @media #{$xs-layout} {
+            text-align: center;
+            h2 {
+                font-size: 22px;
+                line-height: 30px;
+            }
+        }
+    }
+}
+
+.section-title-2 {
+    h2 {
+        font-size: 34px;
+        font-weight: 500;
+        line-height: 1.42em;
+        margin: 0 auto;
+        width: 70%;
+        text-align: center;
+        @media #{$lg-layout} {
+            font-size: 30px;
+            width: 80%;
+        }
+        @media #{$md-layout} {
+            font-size: 26px;
+            width: 90%;
+        }
+        @media #{$xs-layout} {
+            font-size: 20px;
+            width: 100%;
+        }
+        @media #{$sm-layout} {
+            font-size: 22px;
+        }
+    }
+    p {
+        font-size: 15px;
+        color: #444;
+        line-height: 1.74;
+        width: 55%;
+        margin: 15px auto 0;
+        text-align: center;
+        @media #{$lg-layout} {
+            width: 58%;
+        }
+        @media #{$md-layout} {
+            width: 77%;
+        }
+        @media #{$xs-layout} {
+            width: 100%;
+            margin: 10px auto 0;
+        }
+        @media #{$sm-layout} {
+            width: 84%;
+        }
+    }
+    @media #{$xs-layout} {
+        &.mb-35 {
+            margin-bottom: 25px;
+        }
+        &.mb-45 {
+            margin-bottom: 35px;
+        }
+    }
+}
+
+
+

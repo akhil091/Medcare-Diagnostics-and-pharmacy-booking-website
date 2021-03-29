@@ -1,0 +1,55 @@
+{% extends 'basic.html' %}
+{% block content %}
+{% load static %}
+        <div class="breadcrumb-area breadcrumb-area-padding-2 bg-gray-2">
+            <div class="custom-container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li class="active">Conditions & Treatments</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="shop-area pt-75 pb-55">
+            <div class="custom-container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-12">
+                        <div class="shop-bottom-area">
+                            <div class="row" id="doctors_list">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+function html1(order){
+    return ('<div class="col-xl-4 col-lg-4 col-md-4 col-12 col-sm-6 mb-30 "><div class="single-product-wrap bg-gray-2 "><div class="row"><div class="col-xl-4 col-lg-4 col-md-4  col-sm-4 col-4"><div class="product-img-action-wrap mb-10"><form id="form_id"><div class="product-img product-img-zoom"><a  href="/doctordetails/'+ order.id +'"><img class="default-img" src="'+ order.Profile_pic +'" alt="Doctor Image"></a></div></form></div></div><div class="col-xl-8 col-lg-8 col-md-8  col-sm-8 col-8 "><div class="product-content-wrap "><div class="product-category"><a href="javascript:void(0);" >'+ order.Specialization.name +' </a></div><h2><a  href="/doctordetails/'+ order.id +'" class="testheading">'+ order.Name +' </a></h2><p class="mb-0 mt-5"><i class="far fa-info-circle"></i> '+ order.Qualification +'</p><p><i class="far fa-clock"></i></i> '+ order.week_timing +'</p><div class="product-price">Consultation Fee:<span class="new-price"> &#8377; '+ order.Fee +'</span></div><div class="btn-style-1 pt-10"><a class="font-size-14 btn-1-padding-2 " href="/doctordetails/'+ order.id +'"  >Book Now</a></div></div></div></div></div></div>');
+}
+$(document).ready(function(){
+    console.log('jhgyjfgyj');
+        var url = window.location.pathname;
+        var id = url.substring(url.lastIndexOf('/') + 1);
+        console.log('hjtfjh',id);
+        $.ajax({
+            type: "POST",
+            url: urllink + "/doctor/condition",
+            data: {
+                    'pk':id
+            },
+            dataType: "JSON",
+            success: function (data) {
+                console.log(id);
+                console.log(data);
+                for(var i=0; i<data.length; i++){
+                    document.getElementById("doctors_list").innerHTML += html1(data[i]);
+                }
+            }
+        });
+});
+</script>
+{% endblock %}

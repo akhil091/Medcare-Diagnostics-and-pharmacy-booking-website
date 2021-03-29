@@ -1,0 +1,72 @@
+{% extends 'basic.html' %}
+{% block content %}
+        <div class="breadcrumb-area breadcrumb-area-padding-2 bg-gray-2">
+            <div class="custom-container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li class="active">Join Us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="contact-us-area pt-65 pb-45">
+            <div class="container">
+                <div class="section-title-2 mb-45">
+                    <h2>Work with Us!</h2>
+                    <p>You can call us in working time or visit our office. Or you can email us with your details. All emails will get the response within 24 hours. </p>
+                </div>
+                <div class="row">
+                    <div class="col-xl-8 col-lg-10 ml-auto mr-auto">
+                        <div class="contact-from-area  padding-20-row-col">
+
+                            <form class="contact-form-style text-center" id="contact-form">
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-style mb-20">
+                                            <input id="name" placeholder="Your Name" type="text" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-style mb-20">
+                                            <input id="email" placeholder="Your Email" type="email" value="" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-style mb-20">
+                                            <input id="telephone" placeholder="Your Phone" type="tel"  maxlength="10" minlength="10" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-style mb-20">
+                                        <select id="timefield">
+                                            <option>I would like to join as a</option>
+                                            <option value="Doctor">Doctor</option>
+                                            <option value="">Delivery Person</option>
+                                            <option value="">Lab Operator</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="input-style mb-20">
+                                        <input id="address" placeholder="Your Address" type="text"  required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="textarea-style mb-30">
+                                            <textarea id="message" placeholder="About Yourself (Optional)" required></textarea>
+                                        </div>
+                                        <button class="submit submit-auto-width" type="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <h3 class="form-message text-center"></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

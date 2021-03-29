@@ -1,0 +1,94 @@
+/*------ 13. Breadcrumb style  --------*/
+
+.breadcrumb-area-padding-1 {
+	padding: 15px 0 55px;
+    @media #{$xs-layout} {
+        padding: 25px 0 26px;
+    }
+}
+.breadcrumb-area-padding-2 {
+	padding: 20px 0 20px;
+}
+.breadcrumb-content {
+    &.breadcrumb-content-mb1 {
+        margin: 0 0 30px;
+        @media #{$xs-layout} {
+            margin: 0 0 8px;
+        }
+    }
+    @media #{$xs-layout} {
+        text-align: center;
+    }
+    ul{
+        li {
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 400;
+            color: $theme-color-blue;
+            margin-right: 18px;
+            text-transform: capitalize;
+            position: relative;
+            &::before {
+                position: absolute;
+                width: 17px;
+                height: 1px;
+                background-color: #ababab;
+                content: "";
+                right: -20px;
+                top: 14px;
+                z-index: 9;
+                transform: rotate(115deg);
+            }
+            &:last-child::before {
+                display: none;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+            a {
+                color: $black;
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: auto;
+                    right: 0;
+                    bottom: 0px;
+                    height: 1px;
+                    width: 0;
+                    transition: width .6s cubic-bezier(.25,.8,.25,1) 0s;
+                    background: $theme-color-blue;
+                }
+                &:hover {
+                    color: $theme-color-blue;
+                    &::after {
+                        width: 100%;
+                        left: 0;
+                        right: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.breadcrumb-title {
+    h1 {
+        font-size: 40px;
+        font-weight: 500;
+        line-height: 1.2;
+        color: #333;
+        margin: 0;
+        @media #{$lg-layout} {
+            font-size: 30px;
+        }
+        @media #{$md-layout} {
+            font-size: 30px;
+        }
+        @media #{$xs-layout} {
+            font-size: 25px;
+        }
+    }
+}
+
+

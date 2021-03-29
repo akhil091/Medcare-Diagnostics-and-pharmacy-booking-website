@@ -1,0 +1,139 @@
+{% extends 'basic.html' %}
+{% block content %}
+
+<div class="breadcrumb-area breadcrumb-area-padding-2 bg-gray-2">
+            <div class="custom-container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li class="active">Tests</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="shop-area pt-75 pb-55">
+            <div class="custom-container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-8">
+                    {% include 'src/testpagination.html' %}
+                        <div class="shop-bottom-area">
+                            <div class="row" id="test_list">
+
+                            </div>
+                            <div class="pro-pagination-style text-center mt-55">
+                                <ul>
+                                    <li><a class="active" href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a class="next" href="#"><i class="far fa-angle-double-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% include 'src/filter.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<script>
+function test(order){
+    return ('<div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6 mb-30 " id="searchthis"><div class="single-product-wrap bg-gray-2 "><div class="product-content-wrap "><div class="product-category"><a href="/testdetails">Test</a></div><h2><a href="/testdetails/'+ order.id +'" class="testheading">'+ order.Name+ '</a></h2><p class="mb-0 mt-5"><i class="far fa-info-circle"></i> '+ order.Pre_Test_Information + '</p><p><i class="far fa-clock"></i></i> '+ order.Report_Delivery +'</p><div class="product-price"><span class="new-price">&#8377; '+ order.Discount_Price+'</span><span class="old-price">&#8377;'+ order.Price +'</span></div><div class="btn-style-1 pt-10"><a class="font-size-14 btn-1-padding-2 addtest" id="'+order.id+'">Add To Cart</a></div></div></div></div>');
+
+}
+</script>
+
+<script>
+$(document).ready(function(){
+    $.ajax({
+        type: "POST",
+        url: urllink + "/lab/data",
+        dataType: "JSON",
+        data:{
+            'test' : true
+        },
+        success: function (data) {
+            for(var i=0; i<data.length; i++){
+                document.getElementById("test_list").innerHTML += test(data[i]);
+            }
+        }
+    });
+});
+</script>
+
+<script type="text/javascript">
+        setTimeout(function() {
+            function getCookie() {
+            var name = "bToken=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        console.log(getCookie());
+    $(".addtest").on("click", function(e){
+        var pk = this.id;
+        $ths = $(this);
+        console.log(pk);
+            e.preventDefault();
+            $.ajax({
+                url  : urllink + "/lab/add-to-cart",
+                type : "POST",
+                data : JSON.stringify({
+                    'test': true,
+                    'id': pk
+                }),
+                beforeSend: function(request) {
+                        request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+                    },
+                processData: false,
+                dataType: "json",
+                contentType: 'application/json',
+                success:function(Response){
+                    console.log(Response);
+                    $ths.html("Added");
+                },
+                error: function (Response) {
+                    $("#loginmodalbox").modal('show');
+                }
+            });
+    });
+}, 1000);
+    </script>
+    <script>
+ $("#search-box").keyup(function() {
+
+      // Retrieve the input field text and reset the count to zero
+      var filter = $(this).val(),
+        count = 0;
+
+      // Loop through the comment list
+      $('#test_list #searchthis').each(function() {
+
+
+        // If the list item does not contain the text phrase fade it out
+        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+          $(this).hide();  // MY CHANGE
+
+          // Show the list item if the phrase matches and increase the count by 1
+        } else {
+          $(this).show(); // MY CHANGE
+          count++;
+        }
+
+      });
+
+    });
+</script>
+{% endblock %}

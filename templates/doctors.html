@@ -1,0 +1,168 @@
+{% extends 'basic.html' %}
+{% block content %}
+{% load static %}
+<div class="breadcrumb-area breadcrumb-area-padding-2 bg-gray-2">
+            <div class="custom-container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li class="active">Doctors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="shop-area pt-75 pb-55">
+            <div class="custom-container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-8">
+                    {% include 'src/pagination.html' %}
+                        <div class="shop-bottom-area">
+                            <div class="row" id="doctors_list">
+
+                            </div>
+                            <div class="pro-pagination-style text-center mt-55">
+                                <ul>
+                                    <li><a class="active" href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a class="next" href="#"><i class="far fa-angle-double-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="sidebar-wrapper sidebar-wrapper-mr1">
+                            <div class="sidebar-widget sidebar-widget-wrap sidebar-widget-padding-2 mb-20">
+                                <h4 class="sidebar-widget-title">Search </h4>
+                                <div class="search-style-3">
+                                    <form>
+                                        <input type="text" id="search-box" placeholder="Search Doctors…">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget sidebar-widget-wrap sidebar-widget-padding-1 mb-20">
+                                <h4 class="sidebar-widget-title">Filter by Specialization: </h4>
+                                <div class="sidebar-categories-list">
+                                    <ul >
+                                    {% for item in speciality %}
+                                        <li ><a  class="speciality" id="{{item.id}}">{{item.name}}<span></span></a></li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget sidebar-widget-wrap sidebar-widget-padding-1 mb-20">
+                                <h4 class="sidebar-widget-title">Filter By Conditions: </h4>
+                                <div class="sidebar-brand-list">
+                                    <ul>
+                                    {% for item in condition %}
+                                    <li ><a  class="condition" id="{{item.id}}">{{item.name}}<span></span></a></li>
+                                    {% endfor %}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+function html1(order){
+    return ('<div class="col-xl-11 col-lg-10 col-md-10 col-12 col-sm-10 mb-30 " id="searchthis"><div class="single-product-wrap bg-gray-2 "><div class="row"><div class="col-xl-4 col-lg-4 col-md-4  col-sm-4 col-4"><div class="product-img-action-wrap mb-10"><form id="form_id"><div class="product-img product-img-zoom"><a  href="/doctordetails/'+ order.id +'"><img class="default-img" src="'+ order.Profile_pic +'" alt="Doctor Image"></a></div></form></div></div><div class="col-xl-8 col-lg-8 col-md-8  col-sm-8 col-8"><div class="product-content-wrap "><div class="product-category"><a href="javascript:void(0);" >'+ order.Specialization.name +' </a></div><h2><a  href="/doctordetails/'+ order.id +'" class="testheading">'+ order.Name +' </a></h2><p class="mb-0 mt-5"><i class="far fa-info-circle"></i> '+ order.Qualification +'</p><p><i class="far fa-clock"></i> '+ order.week_timing +'</p><div class="product-price">Consultation Fee:<span class="new-price"> &#8377; '+ order.Fee +'</span></div><div class="btn-style-1 pt-10"><a class="font-size-14 btn-1-padding-2 " href="/doctordetails/'+ order.id +'"  >Book Now</a></div></div></div></div></div></div>');
+
+}
+</script>
+{% comment %} <script>
+function myFunction() {
+  document.getElementById("myForm").submit();
+}
+</script> {% endcomment %}
+<script>
+$(document).ready(function(){
+
+    $.ajax({
+        type: "GET",
+        url: urllink + "/doctor",
+        dataType: "JSON",
+        success: function (data) {
+            for(var i=0; i<data.length; i++){
+                document.getElementById("doctors_list").innerHTML += html1(data[i]);
+            }
+        }
+    });
+});
+</script>
+
+<script>
+$(document).ready(function(){
+$(".speciality").on("click", function(e){
+    document.getElementById("doctors_list").innerHTML = "";
+    var pk = this.id;
+    $.ajax({
+        type: "POST",
+        url: urllink + "/doctor/specialization",
+        data: {
+                'pk':pk
+        },
+        dataType: "JSON",
+        success: function (data) {
+            for(var i=0; i<data.length; i++){
+                document.getElementById("doctors_list").innerHTML += html1(data[i]);
+            }
+        }
+    });
+
+});
+$(".condition").on("click", function(e){
+    document.getElementById("doctors_list").innerHTML = "";
+    var pk = this.id;
+    $.ajax({
+        type: "POST",
+        url: urllink + "/doctor/condition",
+        data: {
+                'pk':pk
+        },
+        dataType: "JSON",
+        success: function (data) {
+            for(var i=0; i<data.length; i++){
+                document.getElementById("doctors_list").innerHTML += html1(data[i]);
+            }
+        }
+    });
+
+});
+});
+
+</script>
+<script>
+ $("#search-box").keyup(function() {
+
+      // Retrieve the input field text and reset the count to zero
+      var filterr = $(this).val(),
+        count = 0;
+
+      // Loop through the comment list
+      $('#doctors_list #searchthis').each(function() {
+
+
+        // If the list item does not contain the text phrase fade it out
+        if ($(this).text().search(new RegExp(filterr, "i")) < 0) {
+          $(this).hide();  // MY CHANGE
+
+          // Show the list item if the phrase matches and increase the count by 1
+        } else {
+          $(this).show(); // MY CHANGE
+          count++;
+        }
+
+      });
+
+    });
+</script>
+
+{% endblock %}

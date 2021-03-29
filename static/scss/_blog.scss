@@ -1,0 +1,235 @@
+/*-------- 11. Blog style ---------*/
+
+.blog-wrap {
+	display: flex;
+	flex-wrap: wrap;
+    .blog-img {
+        position: relative;
+        flex: 0 0 45%;
+        padding-right: 35px;
+        @media #{$lg-layout} {
+            padding-right: 20px;
+        }
+        @media #{$xs-layout} {
+            flex: 0 0 100%;
+            padding-right: 0px;
+        }
+        a {
+            display: block;
+            border-radius: 5px;
+            overflow: hidden;
+            img {
+                width: 100%;
+                transition: all 1.5s cubic-bezier(0,0,.2,1);
+            }
+        }
+        .blog-tag {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            line-height: 1;
+            a {
+                background-color: $theme-color-blue;
+                color: $white;
+                font-size: 14px;
+                display: inline-block;
+                font-weight: 500;
+                letter-spacing: 1;
+                text-transform: uppercase;
+                line-height: 1;
+                border-radius: 5px;
+                padding: 6px 11px 6px;
+            }
+        }
+    }
+    .blog-content {
+        flex: 0 0 55%;
+        margin: 15px 0 0;
+        @media #{$lg-layout} {
+            margin: 0px 0 0;
+        }
+        @media #{$xs-layout} {
+            flex: 0 0 100%;
+        }
+        .blog-meta {
+            span {
+                i {
+                    margin-right: 6px;
+                }
+                font-size: 14px;
+                color: #444;
+            }
+        }
+        h3 {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin: 9px 0 0;
+            @media #{$xl-layout} {
+                font-size: 19px;
+            }
+            @media #{$lg-layout} {
+                line-height: 1.3;
+                font-size: 18px;
+            }
+            @media #{$xs-layout} {
+                line-height: 1.3;
+                margin: 5px 0 0;
+            }
+            a {
+                color: $black;
+                &:hover {
+                    color: $theme-color-blue;
+                }
+            }
+        }
+    }
+    &:hover {
+        .blog-img {
+            a {
+                img {
+                    transform: scale3d(1.1,1.1,1.1);
+                }
+            }
+        }
+    }
+}
+
+.blog-wrap-2 {
+    border-radius: 5px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.05);
+    background: #fff;
+    .blog-img-2 {
+        display: block;
+        overflow: hidden;
+        position: relative;
+        a {
+            display: block;
+            border-radius: 5px;
+            overflow: hidden;
+            img {
+                width: 100%;
+                transition: all 1.5s cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+        .blog-tag-2 {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            a {
+                background-color: $theme-color-blue;
+                color: $white;
+                font-size: 14px;
+                display: inline-block;
+                font-weight: 500;
+                letter-spacing: 1;
+                text-transform: uppercase;
+                line-height: 1;
+                border-radius: 5px;
+                padding: 6px 11px 6px;
+            }
+        }
+    }
+    .blog-content-2 {
+        padding: 26px 30px 30px;
+        @media #{$xx-layout} {
+            padding: 26px 25px 30px;
+        }
+        @media #{$xl-layout} {
+            padding: 26px 25px 30px;
+        }
+        @media #{$lg-layout} {
+            padding: 26px 20px 30px;
+        }
+        @media #{$md-layout} {
+            padding: 26px 20px 30px;
+        }
+        @media #{$xs-layout} {
+            padding: 26px 20px 30px;
+        }
+        @media #{$sm-layout} {
+            padding: 26px 15px 30px;
+        }
+        .blog-meta-2 {
+            ul {
+                li {
+                    i {
+                        margin-right: 6px;
+                        @media #{$xs-layout} {
+                            margin-right: 3px;
+                        }
+                    }
+                    font-size: 14px;
+                    color: #444;
+                    display: inline-block;
+                    margin-right: 20px;
+                    @media #{$xl-layout} {
+                        margin-right: 16px;
+                    }
+                    @media #{$xs-layout} {
+                        margin-right: 8px; 
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+        h3 {
+            font-size: 20px;
+            margin: 13px 0 23px;
+            line-height: 1.6;
+            @media #{$lg-layout} {
+                font-size: 18px;
+                margin: 10px 0 15px;
+                line-height: 1.5;
+            }
+            @media #{$md-layout} {
+                font-size: 18px;
+                margin: 10px 0 15px;
+                line-height: 1.5;
+            }
+            @media #{$xs-layout} {
+                font-size: 18px;
+                margin: 10px 0 15px;
+                line-height: 1.5;
+            }
+            a {
+                color: $black;
+                &:hover {
+                    color: $theme-color-blue;
+                }
+            }
+        }
+        .blog-btn {
+            a {
+                display: inline-block;
+                font-size: 15px;
+                font-weight: 700;
+                color: $black;
+                i {
+                    margin-left: 14px;
+                    color: $theme-color-blue;
+                    font-size: 15px;
+                    position: relative;
+                    top: 2px;
+                }
+                &:hover {
+                    color: $theme-color-blue;
+                }
+            }
+        }
+    }
+    &:hover {
+        .blog-img-2 {
+            a {
+                img {
+                    transform: scale3d(1.1, 1.1, 1.1);
+                }
+            }
+        }
+    }
+}
+
+
+

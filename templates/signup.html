@@ -1,0 +1,211 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+
+<div class="breadcrumb-area breadcrumb-area-padding-2 bg-gray-2">
+            <div class="custom-container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li class="active">Sign Up</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-register-area pt-75 pb-75">
+            <div class="container">
+                <div class="row">
+                <div class="col-lg-6">
+                <img src="{% static 'icons/undraw_welcome_cats_thqn.svg' %}"  width="90%" alt="">
+                </div>
+                    <div class="col-lg-6">
+                        <div class="login-register-wrap login-register-gray-bg">
+                            <div class="login-register-title">
+                                <h1 >REGISTER</h1>
+                            </div>
+                            <div class="login-register-form">
+                                <form id="signupform" method='post' >
+                                    <div class="lost-remember-wrap ">
+                                        <div class="lost-wrap pb-20">
+                                            <a href="/signin">Have an account? Log In</a>
+                                        </div>
+                                    </div>
+                                    <div class="login-register-input-style input-style input-style-white">
+                                        <label>Phone Number *</label>
+                                        <input type="tel" name="Phone" value="" id="Phone" maxlength="10" minlength="10" required>
+                                        <p class="phone-message pt-5" style="color:red;"></p>
+                                    </div>
+                                    <div class="login-register-btn">
+                                        <button type="submit" id="sendotp">Send OTP</button>
+                                    </div>
+                                </form>
+
+                                <form id="otpform" style="display:none;" method="post" >
+                                <div class="alert alert-success alert-dismissible">
+                                <span class="success-message">OTP send successfully!!</span>
+                                </div>
+                                    <div class="login-register-input-style input-style input-style-white">
+                                        <label>OTP *</label>
+                                        <input type="text" value="" name="otp" id="otp" maxlength="6"  minlength="6" required>
+                                        <p class="otp-message pt-5" style="color:red;"></p>
+                                    </div>
+                                    <div class="login-register-btn">
+                                        <button type="submit" id="verifyotp">Verify OTP</button>
+                                    </div>
+                                </form>
+
+                                <form id="regform" style="display:none;" onsubmit ="return validateForm()">
+                                <div class="alert alert-success alert-dismissible">
+                                <span class="success-message">OTP verified!!</span>
+                                </div>
+                                    <div class="row">
+                                    <div class="col-lg-6 col-md-6 login-register-input-style input-style input-style-white">
+                                        <label>First Name *</label>
+                                        <input  type="text" name="fname" id="fname" value=""  required>
+                                        <span id = "ferror" style="color:red;"> </span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 login-register-input-style input-style input-style-white">
+                                        <label>Last Name *</label>
+                                        <input type="text" name="lname" id="lname" value="" required>
+                                        <span id = "lerror" style="color:red;"> </span>
+                                    </div>
+                                    </div>
+                                    <div class="login-register-input-style input-style input-style-white">
+                                        <label>Create Your Password *</label>
+                                        <input type="password" id="pwd1" value="" required>
+                                        <span id = "pass" style="color:red;"> </span>
+                                    </div>
+                                    <div class="login-register-input-style input-style input-style-white">
+                                        <label>Confirm Your Password *</label>
+                                        <input type="password" id="pwd2" value="" required>
+                                        <span id = "message1"> </span>
+                                    </div>
+                                    <div class="login-register-btn">
+                                    <p class="error-message pb-5" style="color:red;"></p>
+                                        <button type="submit" id="register">Register</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<script>
+function checkfname() {
+        var finame = $("#fname").val();
+        if (finame=="")
+            $("#ferror").html("Enter your first name");
+        if(finame.length<3)
+            $("#ferror").html("Name must be at least 3 characters long.");
+        else
+            $("#ferror").hide();
+}
+function checklname() {
+        var laname = $("#lname").val();
+        if (laname=="")
+            $("#lerror").html("Enter your last name");
+        if(laname.length<3)
+            $("#lerror").html("Name must be at least 3 characters long.");
+        else
+            $("#lerror").hide();
+}
+
+function checkPassword() {
+        var pas = $("#pwd1").val();
+        if (pas=="")
+            $("#pass").html("Please create passsword");
+        if(pas.length<6)
+            $("#pass").html("Password must be at least 6 characters long.");
+        else
+            $("#pass").hide();
+}
+
+function checkPasswordMatch() {
+        var password = $("#pwd1").val();
+        var confirmPassword = $("#pwd2").val();
+        if (password != confirmPassword)
+            $("#message1").html("Passwords does not match!").css('color','red');
+        else
+            $("#message1").html("Password Confirmed.").css('color','green');
+}
+
+$(document).ready(function () {
+    $("#pwd2").keyup(checkPasswordMatch);
+    $("#pwd1").keyup(checkPassword);
+    $("#fname").keyup(checkfname);
+    $("#lname").keyup(checklname);
+});
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    var temp;
+    $("#sendotp").on("click", function(e){
+    e.preventDefault();
+    temp = $('#Phone').val();
+    $.ajax({
+        url  : urllink + "/send_otp",
+        type : "POST",
+        cache:false,
+        data : {
+            'Phone':temp
+            },
+        success:function(Response){
+            $("#otpform").show();
+            $("#signupform").hide();
+        },
+        error: function (Response) {
+            $(".phone-message").html(Response.responseJSON.message);
+        }
+    });
+    });
+
+    // Verify OTP
+    $("#verifyotp").on("click",function(e){
+    e.preventDefault();
+
+    $.ajax({
+        url  : urllink + "/verify_user",
+        type : "POST",
+        data : {
+        'Phone': temp,
+        'otp': $('#otp').val()
+        },
+        success:function(Response){
+            $("#regform").show();
+            $("#otpform").hide();
+            },
+            error: function (Response) {
+            $(".otp-message").html(Response.responseJSON.message);
+            }
+    });
+    });
+
+    $("#register").on("click",function(e){
+    e.preventDefault();
+    $.ajax({
+        url  : urllink + "/Register",
+        type : "POST",
+        data : {
+        'Phone': temp,
+        'first': $('#fname').val(),
+        'last': $('#lname').val(),
+        'pass': $('#pwd1').val(),
+        },
+        success:function(Response){
+            alert("You are registered!! Please Log In :)");
+            window.location = "/signin";
+            },
+            error: function (Response) {
+            $(".error-message").html("Response.responseJSON.message");
+            }
+    });
+    });
+});
+</script>
+{% endblock %}

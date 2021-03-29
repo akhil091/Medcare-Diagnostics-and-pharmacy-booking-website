@@ -1,0 +1,94 @@
+<div class="col-lg-4">
+                        <div class="sidebar-wrapper sidebar-wrapper-mr1">
+                        <div class="sidebar-widget sidebar-widget-wrap sidebar-widget-padding-2 mb-20">
+                                <h4 class="sidebar-widget-title">Search </h4>
+                                <div class="search-style-3">
+                                    <form action="#">
+                                        <input type="text" placeholder="Search…">
+                                        <button type="submit"> <i class="far fa-search"></i> </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget sidebar-widget-wrap sidebar-widget-padding-1 mb-20">
+                                <h4 class="sidebar-widget-title">Filter by Specialization: </h4>
+                                <div class="sidebar-categories-list">
+                                    <ul id="specialization_filter" class="speciality">
+                                    {% for i in speciality%}
+<li ><a  id="{{i.id}}">{{i.name}}<span></span></a></li>
+{% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget sidebar-widget-wrap sidebar-widget-padding-1 mb-20">
+                                <h4 class="sidebar-widget-title">Filter By Conditions: </h4>
+                                <div class="sidebar-brand-list">
+                                    <ul id="condition_filter">
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                            {% comment %} <script>
+function sfilter(order){
+    return ('<li ><a  id="' +order.id +' speciality">' + order.name + '<span></span></a></li>');
+}
+</script> {% endcomment %}
+{% comment %} <script>
+$(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:8000/doctor/specialization",
+        dataType: "JSON",
+        success: function (data) {
+            for(var i=0; i<data.length; i++){
+                document.getElementById("specialization_filter").innerHTML += sfilter(data[i]);
+            }
+        }
+    });
+});
+</script> {% endcomment %}
+  <script>
+function cfilter(order){
+    return ('<li><a "' +order.id +'">' + order.name + '<span></span></a></li>');
+}
+</script>
+<script>
+$(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:8000/doctor/condition",
+        dataType: "JSON",
+        success: function (data) {
+            for(var i=0; i<data.length; i++){
+                document.getElementById("condition_filter").innerHTML += cfilter(data[i]);
+            }
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+setTimeout(function() {
+    $(".speciality").on("click", function(e){
+        console.log("ht gh");
+    document.getElementById("doctors_list").innerHTML = "";
+    var pk = this.id;
+    console.log(this.id);
+    console.log(pk);
+    $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:8000/doctor/specialization",
+        data: {
+                'pk':pk
+        },
+        dataType: "JSON",
+        success: function (data) {
+            console.log("htgfhfgthtrhthtrh");
+            for(var i=0; i<data.length; i++){
+                document.getElementById("doctors_list").innerHTML += html1(data[i]);
+            }
+        }
+    });
+
+});}, 1000);
+</script>

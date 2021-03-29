@@ -1,0 +1,133 @@
+{% extends 'basic.html' %}
+{% block content %}
+        <div class="breadcrumb-area breadcrumb-area-padding-2 bg-gray-2">
+            <div class="custom-container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li class="active">Contact Us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="contact-us-area pt-65 pb-45">
+            <div class="container">
+                <div class="section-title-2 mb-45">
+                    <h2>We're always eager to hear from you!</h2>
+                    <p>You can call us in working time or visit our office. All mails will get the response within 24 hours. Love to hear from you! </p>
+                </div>
+                <div class="contact-info-wrap-2 mb-40">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-12 col-sm-5">
+                            <div class="single-contact-info3-wrap mb-30">
+                                <div class="single-contact-info3-icon">
+                                    <i class="fal fa-map-marker-alt"></i>
+                                </div>
+                                <div class="single-contact-info3-content">
+                                    <h3>Address</h3>
+                                    <p class="width-1"> 1800 Abbot Kinney Blvd. Unit D & E Venice</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12 col-sm-7">
+                            <div class="single-contact-info3-wrap mb-30">
+                                <div class="single-contact-info3-icon">
+                                    <i class="fal fa-phone"></i>
+                                </div>
+                                <div class="single-contact-info3-content">
+                                    <h3>Contact</h3>
+                                    <p> Mobile: <span>(+61) - 1990 - 6886</span></p>
+                                    <p> Hotline: <span>1800 - 1102</span></p>
+                                    <p> Mail: <span>contact@medizin.com</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12 col-sm-12">
+                            <div class="single-contact-info3-wrap mb-30">
+                                <div class="single-contact-info3-icon">
+                                    <i class="fal fa-clock"></i>
+                                </div>
+                                <div class="single-contact-info3-content">
+                                    <h3>Hour of operation</h3>
+                                    <p> Monday - Friday: 09:00 - 20:00 </p>
+                                    <p> Sunday & Saturday: 10:30 - 22:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-8 col-lg-10 ml-auto mr-auto">
+                        <div class="contact-from-area  padding-20-row-col">
+
+                            <form class="contact-form-style text-center" id="contact-form">
+                            <h3>Ask us anything here</h3>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-style mb-20">
+                                            <input id="name" placeholder="Your Name" type="text" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-style mb-20">
+                                            <input id="email" placeholder="Your Email" type="email" value="" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-style mb-20">
+                                            <input id="telephone" placeholder="Your Phone" type="tel"  maxlength="10" minlength="10" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-style mb-20">
+                                            <input id="subject" placeholder="Subject" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="textarea-style mb-30">
+                                            <textarea id="message" placeholder="Message" required></textarea>
+                                        </div>
+                                        <button class="submit submit-auto-width" type="submit">Send message</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <h3 class="form-message text-center"></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map ">
+                    <div id="map"><iframe src="https://www.google.com/maps/embed?pb=!" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+                </div>
+            </div>
+        </div>
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+    $(".submit").on("click", function(e){
+    e.preventDefault();
+    $.ajax({
+        url  : urllink + "/contactus",
+        type : "POST",
+        crossDomain: true,
+        data : {
+            'Name': $('#name').val(),
+            'Email': $('#email').val(),
+            'Contact': $('#telephone').val(),
+            'Subject': $('#subject').val(),
+            'Message': $('#message').val(),
+            },
+        success:function(){
+            $("#contact-form").hide();
+            $(".form-message").html("Thank You!! Your response is recorded");
+        },
+        error: function () {
+            $(".form-message").html("Submission Failed!! Please try Again.");
+        }
+    });
+    });
+    });
+    </script>
+{% endblock %}

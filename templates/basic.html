@@ -1,0 +1,608 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <!-- Page Title -->
+    <title>Medcare Wellness Centre | Care You Need</title>
+    <!-- Stylesheet -->
+
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/vendor/font-cerebrisans.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/vendor/fontawesome-all.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/vendor/font-medizin.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/plugins/slick.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/plugins/animate.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/plugins/magnific-popup.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/plugins/select2.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/plugins/jquery-ui.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" />
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script>var urllink ="http://medcarejammu.pythonanywhere.com";</script>
+
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <header class="header-area header-height-3">
+        <div class="header-top header-top-ptb-1 bg-gray d-none d-lg-block">
+          <div class="custom-container">
+            <div class="row align-items-center">
+              <div class="col-xl-3 col-lg-4">
+                <div class="header-info">
+                  <ul>
+                    <li>
+                      <a href="#"
+                        ><i class="info-icon fas fa-phone"></i> (+88) - 1990 -
+                        6886</a
+                      >
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://www.google.com/maps"
+                        ><i class="fas fa-map-marker-alt"></i> Jammu</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-9 col-lg-8">
+                <div class="header-info header-info-right covid-update" >
+                  <p>
+                    <a href="/signin" id="logsign" style="display:none;">Log In / Sign Up</a>
+                    <a id="logout" style="display:none;color:#fff;">Log Out</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header-bottom sticky-bar sticky-white-bg">
+          <div class="custom-container">
+            <div class="header-wrap header-space-between position-relative">
+              <div class="logo logo-width-1">
+                <a href="/home"
+                  ><img
+                    src="{% static 'logo/medcare2.png' %}"
+                    style="width=20%;"
+                    alt="logo"
+                /></a>
+              </div>
+              <div
+                class="main-menu main-menu-padding-1 main-menu-lh-3 d-none d-lg-block hover-boder hover-boder-modify"
+              >
+                <nav>
+                  <ul>
+                    <li><a class="active" href="/home">Home</a></li>
+                    <li>
+                      <a href="javascript:void(0)"
+                        >Consult Doctor<i class="fa fa-chevron-down"></i
+                      ></a>
+                      <ul class="sub-menu">
+                        <li>
+                          <a
+                            href="/doctors"
+                            style="
+                              font-size: 16px;
+                              font-weight: 500;
+                              color: #343a40;
+                            "
+                            >Book inclinic Apppointment</a
+                          >
+                        </li>
+                        <li><a href="/doctors">View Doctors</a></li>
+                        <li>
+                          <a href="/specializations">List of Specializations</a>
+                        </li>
+                        <li>
+                          <a href="/conditions">Conditions & Treatments</a>
+                        </li>
+                        <li></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)"
+                        >SRL Diagnostics<i class="fa fa-chevron-down"></i
+                      ></a>
+                      <ul class="sub-menu">
+                        <li>
+                          <a
+                            href="/tests"
+                            style="
+                              font-size: 16px;
+                              font-weight: 500;
+                              color: #343a40;
+                            "
+                            >Schedule Home Collection</a
+                          >
+                        </li>
+                        <li><a href="/healthpackages">Health Packages</a></li>
+                        <li><a href="/tests">Laboratory tests</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="/ordermedicines">Order Medicine</a></li>
+                    <li>
+                      <a href="javascript:void(0)"
+                        >About<i class="fa fa-chevron-down"></i
+                      ></a>
+                      <ul class="sub-menu">
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/joinus">Join Us</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="/contact">Contact </a></li>
+                  </ul>
+                </nav>
+              </div>
+
+              <div class="header-action-right">
+                <div class="header-action">
+                  <div class="header-action-icon">
+                    <a class="search-active" href="#"
+                      ><i class="far fa-search"></i
+                    ></a>
+                  </div>
+                  <div class="header-action-icon">
+                    <a id="accountlink"><i class="far fa-user"></i></a>
+                  </div>
+                  <div class="header-action-icon">
+                    <a id="cartlink" ><i class="far fa-shopping-bag" id="cart_count"></i>
+
+                    </a><div class="cart-dropdown-wrap">
+                      <ul id="carthoverlist">
+
+                      </ul>
+                      <div class="shopping-cart-footer">
+                        <div class="shopping-cart-total" id="carthoveramount">
+
+                        </div>
+                        <div class="shopping-cart-button">
+                          <a href="/cart">View cart</a>
+                          <a href="/checkout">Checkout</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="header-action-icon d-block d-lg-none">
+                    <div class="burger-icon">
+                      <span class="burger-icon-top"></span>
+                      <span class="burger-icon-bottom"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    {% block content %} {% endblock %}
+    <footer class="footer-area pt-75 bg-gray-2">
+      <div class="custom-container">
+        <div class="row pb-25">
+          <div class="col-width-25 custom-common-column">
+            <div class="footer-widget footer-about mb-30">
+              <div class="footer-logo logo-width-1">
+                <a href="/home"
+                  ><img src="{% static 'logo/medcare2.png' %}" alt="logo"
+                /></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-width-22 custom-common-column">
+            <div class="footer-widget mb-40">
+              <h3 class="footer-title">Customer Care</h3>
+              <div class="footer-info-list">
+                <ul>
+                  <li><a href="/contact"> Contact Us </a></li>
+                  <li>
+                    <a href="terms-of-service.html"> Terms of Service </a>
+                  </li>
+                  <li><a href="privacy-policy.html"> Privacy Policy </a></li>
+                  <li><a href="return-policy.html"> Return/Refund Policy </a></li>
+                  <li><a href="/faqs"> FAQs </a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-width-22 custom-common-column">
+            <div class="footer-widget mb-40">
+              <h3 class="footer-title">Ouick Links</h3>
+              <div class="footer-info-list">
+                <ul>
+                  <li><a href="/doctors"> Book Appointment </a></li>
+                  <li><a href="/tests">Home Collection </a></li>
+                  <li><a href="/ordermedicines"> Order Medicines </a></li>
+                  <li><a href="/joinus"> Join Us</a></li>
+                  <li><a href="/about"> About Us </a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-width-31 custom-common-column">
+            <div class="footer-widget mb-40 footer-about-2">
+              <div class="footer-contact-info">
+                <h3 class="footer-title">Contact Us</h3>
+                <p><span> 800 388 80 90 </span></p>
+                <p>contact@medcare.com</p>
+
+                <div class="footer-social-icon tooltip-style-4">
+                  <a aria-label="Twitter" class="twitter" href="#"
+                    ><i class="link-icon fab fa-twitter"></i
+                  ></a>
+                  <a aria-label="Facebook" class="facebook" href="#"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a aria-label="Instagram" class="instagram" href="#"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="app-visa-wrap pt-10">
+                <p>Secured Payment Gateways:</p>
+                <div class="payment-img">
+                  <a href="#"
+                    ><img
+                      src="{% static 'images/icon-img/payment-method.png' %}"
+                      alt=""
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom border-top">
+          <div class="row flex-row-reverse align-items-center">
+            <div class="col-lg-12 col-md-12 col-12">
+              <div class="text-center">
+                <p>
+                  Copyright © 2021 Medcare Wellness Centre. | All rights
+                  reserved. | Developed by
+                  <a target="_blank" href=""> Tathaastu Studio. </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="mobile-header-active mobile-header-wrapper-style">
+      <div class="mobile-header-wrapper-inner">
+        <div class="mobile-header-top">
+          <div class="mobile-header-logo">
+            <a href="/home"
+              ><img src="{% static 'logo/medcare1.png' %}" alt="logo"
+            /></a>
+          </div>
+          <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
+            <button class="close-style search-close">
+              <i class="icon-top"></i>
+              <i class="icon-bottom"></i>
+            </button>
+          </div>
+        </div>
+        <div class="mobile-header-content-area">
+          <div class="covid-update covid-update-mobile mobile-header-border">
+            <p>
+            <a href="/signin" id="logsign" style="display:none;">Log In / Sign Up</a>
+                    <a id="logout" style="display:none;color:#fff;">Log Out</a>
+                    </p>
+          </div>
+
+          <div class="mobile-menu-wrap mobile-header-border">
+            <!-- mobile menu start -->
+            <nav>
+              <ul class="mobile-menu">
+                <li class="menu-item-has-children"><a href="/home">Home</a></li>
+                <li class="menu-item-has-children">
+                  <a href="javascript:void(0)">Schedule Home Collection</a>
+                  <ul class="dropdown">
+                    <li><a href="/healthpackages">Health Packages</a></li>
+                    <li><a href="/tests">Lab tests</a></li>
+                  </ul>
+                </li>
+                <li class="menu-item-has-children">
+                  <a href="javascript:void(0)">Book Appointment</a>
+                  <ul class="dropdown">
+                    <li class="menu-item-has-children">
+                      <a href="/doctors">Doctors</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                      <a href="/conditions">Conditions & Treatments</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                      <a href="/specializations">Specializations</a>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="/ordermedicines">Order Medicines</a></li>
+                <li class="menu-item-has-children">
+                  <a href="javascript:void(0)">About</a>
+                  <ul class="dropdown">
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/joinus">Join Us</a></li>
+                  </ul>
+                </li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </nav>
+            <!-- mobile menu end -->
+          </div>
+          <div class="mobile-header-info-wrap mobile-header-border">
+            <div class="single-mobile-header-info">
+              <a target="_blank" href="https://www.google.com/maps"> Jammu</a>
+            </div>
+            <div class="single-mobile-header-info">
+              <a href="#"> (+88) - 1990 - 6886 </a>
+            </div>
+          </div>
+          <div class="mobile-social-icon">
+            <a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a>
+            <a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="instagram" href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <div class="search-popup-wrap main-search-active">
+            <div class="mobile-menu-close close-style-wrap">
+                <button class="close-style search-close">
+                    <i class="icon-top"></i>
+                    <i class="icon-bottom"></i>
+                </button>
+            </div>
+            <div class="search-popup-content">
+                <form class="search-popup-form" action="#">
+                    <input type="text" placeholder="Search…">
+                </form>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="loginmodalbox" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content"  style="text-align:center;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <h4 class="modal-title" id="mySmallModalLabel"><i class='far fa-exclamation-triangle'></i> Please Login!!</h4>
+              </div>
+                <div class="btn-style-1 p-20 mb-10">
+                    <a class="font-size-16 btn-1-padding-4" href="/signin">Login</a>
+                </div>
+            </div>
+          </div>
+        </div>
+  </body>
+
+  <script src="{% static 'js/main.js' %}" ></script>
+  <script src="{% static 'js/vendor/modernizr-3.6.0.min.js' %}"></script>
+  <script src="{% static 'js/vendor/jquery-3.5.1.min.js' %}"></script>
+  <script src="{% static 'js/vendor/jquery-migrate-3.3.0.min.js' %}"></script>
+  <script src="{% static 'js/vendor/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/plugins/slick.js' %}"></script>
+  <script src="{% static 'js/plugins/jquery.syotimer.min.js' %}"></script>
+  <script src="{% static 'js/plugins/wow.js' %}"></script>
+  <script src="{% static 'js/plugins/svg-inject.min.js' %}"></script>
+  <script src="{% static 'js/plugins/jquery-ui.js' %}"></script>
+  <script src="{% static 'js/plugins/jquery-ui-touch-punch.js' %}"></script>
+  <script src="{% static 'js/plugins/magnific-popup.js' %}"></script>
+  <script src="{% static 'js/plugins/select2.min.js' %}"></script>
+  <script src="{% static 'js/plugins/clipboard.js' %}"></script>
+  <script src="{% static 'js/plugins/vivus.js' %}"></script>
+  <script src="{% static 'js/plugins/waypoints.js' %}"></script>
+  <script src="{% static 'js/plugins/counterup.js' %}"></script>
+  <script src="{% static 'js/plugins/mouse-parallax.js' %}"></script>
+  <script src="{% static 'js/plugins/images-loaded.js' %}"></script>
+  <script src="{% static 'js/plugins/isotope.js' %}"></script>
+  <script src="{% static 'js/plugins/scrollup.js' %}"></script>
+  <!--<script src="{% static 'js/plugins/ajax-mail.js' %}"></script>-->
+  <!-- Main JS -->
+  <script src="{% static 'js/main.js' %}" ></script>
+  <script>
+  $(document).ready(function(){
+
+  function getCookie(token) {
+            var name = token + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        console.log(getCookie());
+
+function checkCookie() {
+    var username = getCookie("bToken");
+    console.log("1");
+    if (username != "") {
+        console.log("2");
+        $('.covid-update #logout').show();
+        $('.covid-update #logsign').hide();
+    } else {
+        $('.covid-update #logsign').show();
+        console.log("3");
+    }
+}
+checkCookie();
+
+    $(".covid-update #logout").on("click", function(e){
+        document.cookie = "bToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location = "/signin";
+    });
+
+    $("#cartlink").on("click", function(e){
+      var username = getCookie("bToken");
+      if (username != "") {
+        window.location="/cart";
+      }
+      else{
+          $("#loginmodalbox").modal('show');
+      }
+    });
+    $("#accountlink").on("click", function(e){
+      var username = getCookie("bToken");
+      if (username != "") {
+        window.location="/myaccount";
+      }
+      else{
+          $("#loginmodalbox").modal('show');
+      }
+    });
+
+  });
+
+function hovercart(order){
+    return ('<li><div class="shopping-cart-title"><h4><a href="/hlthpkgdetails/'+ order.Package.id +'">'+ order.Package.Name +'</a></h4><h3>&#8377; '+ order.Total_Price +' </h3></div><div class="shopping-cart-delete"><a class="removeitem" id="'+ order.id  +'"><i class="far fa-times"></i></a></div></li>');
+}
+
+function hovertestcart(order){
+    return ('<li><div class="shopping-cart-title"><h4><a href="/testdetails/'+ order.Test.id +'">'+ order.Test.Name +'</a></h4><h3>&#8377; '+ order.Total_Price +' </h3></div><div class="shopping-cart-delete"><a class="removeitem" id="'+ order.id  +'"><i class="far fa-times"></i></a></div></li>');
+}
+function carthoveramount(orders){
+    return('<h4>Total <span>&#8377; '+ orders.total_amount +'</span></h4>');
+}
+function cart_count(orders){
+    return('<span class="pro-count blue" > '+ orders+'</span>');
+}
+
+  $(document).ready(function(){
+        function getCookie() {
+            var name = "bToken=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        $.ajax({
+            url  : urllink + "/lab/cart",
+            type : "GET",
+            beforeSend: function(request) {
+                request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+            },
+            processData: false,
+            contentType: false,
+            success:function(data){
+                if(data.length==null){
+                  document.getElementById("cart_count").innerHTML = cart_count(0);
+                    console.log('ugiou');
+                    $(".cart-dropdown-wrap").hide();
+                }
+                else{
+                    document.getElementById("cart_count").innerHTML = cart_count(data.length);
+                    for(var i=0; i<data.length; i++){
+                        if(data[i].Test == null){
+                            console.log("Package");
+                            document.getElementById("carthoverlist").innerHTML += hovercart(data[i]);
+                        }
+                        else{
+                            console.log("Test");
+                            document.getElementById("carthoverlist").innerHTML += hovertestcart(data[i]);
+                        }
+                    }
+                }
+            },
+            error: function () {
+              $(".cart-dropdown-wrap").hide();
+                console.log('errorcart',Response);
+            }
+        });
+        $.ajax({
+            url  : urllink + "/lab/order",
+            type : "GET",
+            beforeSend: function(request) {
+                request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+            },
+            processData: false,
+            contentType: false,
+            success:function(data){
+                document.getElementById("carthoveramount").innerHTML = carthoveramount(data);
+            },
+            error: function () {
+                console.log('error',Response);
+            }
+        });
+    });
+    setTimeout(function() {
+        console.log("fdgfdg");
+        function getCookie() {
+            var name = "bToken=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        $(".removeitem").on("click", function(e){
+            console.log('hfgh');
+            $ths = $(this).closest();
+            var pk = this.id;
+            console.log(pk);
+            e.preventDefault();
+            $.ajax({
+                url  : urllink +  "/lab/remove-from-cart",
+                type : "POST",
+                data : JSON.stringify({
+                    'id': pk
+                }),
+                beforeSend: function(request) {
+                        request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+                    },
+                processData: false,
+                dataType: "json",
+                contentType: 'application/json',
+                success:function(Response){
+                    console.log(Response);
+                    window.location.reload();
+                },
+                error: function (Response) {
+                    $("#loginmodalbox").modal('show');
+                }
+            });
+        });
+    },1000);
+
+</script>
+</html>
+

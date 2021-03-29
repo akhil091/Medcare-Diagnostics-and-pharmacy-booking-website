@@ -1,0 +1,177 @@
+/*-------- 21. My account style ---------*/
+
+.myaccount-tab-menu {
+    flex-direction: column;
+    a {
+        border: 1px solid #eee;
+        border-bottom: none;
+        font-weight: 500;
+        font-size: 16px;
+        display: block;
+        color: #444;
+        padding: 15px 30px;
+        text-transform: capitalize;
+        &:last-child {
+            border-bottom: 1px solid #eee;
+        }
+        &:hover,
+        &.active {
+            background-color: $theme-color-blue;
+            border-color: $theme-color-blue;
+            color: $white; 
+        }
+        i.fa {
+            font-size: 14px;
+            text-align: center;
+            width: 25px;
+        }
+    }
+}
+
+#myaccountContent {
+    @media #{$xs-layout} {
+        margin-top: 30px;
+    }
+}
+
+.myaccount-content {
+    .welcome {
+        p {
+            font-size: 15px;
+            margin: 0 0 23px;
+            a {
+                color: #444;
+                &:hover {
+                    color: $theme-color-blue;
+                }
+            }
+            strong {
+                font-weight: 700;
+            }
+        }
+        
+    }
+    p {
+        font-size: 15px;
+        line-height: 1.74;
+        a {
+            color: #444;
+            &:hover {
+                color: $theme-color-blue;
+            }
+        }
+    }
+    .account-details-form {
+        .account-info {
+            label {
+                font-size: 15px;
+                color: #444;
+                margin: 0 0 3px;
+            }
+            @media #{$xs-layout} {
+                &.mb-30 {
+                    margin-bottom: 15px;
+                }
+            }
+        }
+        span {
+            font-style: italic;
+            font-size: 15px;
+            color: #444;
+            margin: 5px 0 0;
+            display: block;
+        }
+        fieldset {
+            padding: 1.55em 1.625em 3em;
+            border: 1px solid #eee;
+            margin: 30px 0 36px;
+            @media #{$xs-layout} {
+                padding: 1.55em 1em 3em;
+            }
+            legend {
+                font-size: 18px;
+                width: auto;
+                float: inherit;
+            }
+        }
+        .account-info-btn {
+            button {
+                font-size: 15px;
+                font-weight: 700;
+                color: $white;
+                background-color: $theme-color-blue;
+                border-radius: 26px;
+                padding: 11px 41px 13px;
+                border: none;
+                &:hover {
+                    background-color: $theme-color-red;
+                }
+            }
+        }
+    }
+    &.myaccount-address {
+        .myaccount-address-wrap {
+            margin: 20px 0 0px;
+            h3 {
+                font-size: 25px;
+                font-weight: 600;
+                margin: 0;
+                @media #{$lg-layout} {
+                    font-size: 22px;
+                }
+                @media #{$md-layout} {
+                    font-size: 22px;
+                }
+                @media #{$xs-layout} {
+                    font-size: 20px;
+                }
+            }
+            .myaccount-address-content {
+                margin: 20px 0 0;
+                @media #{$xs-layout} {
+                    margin: 14px 0 0;
+                }
+                h4 {
+                    font-size: 18px;
+                    font-size: 500;
+                    margin: 0 0 5px
+                }
+                p {
+                    font-size: 15px;
+                    color: #444;
+                    line-height: 1.74;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+.myaccount-table {
+    white-space: nowrap;
+    font-size: 14px;
+    table,
+    .table {
+        th {
+            padding: 10px;
+            font-weight: 600;
+            background-color: #f8f8f8;
+            border-color: #eee;
+            border-bottom: 0;
+            font-size: 15px;
+            color: $black;
+        }
+
+        td {
+            padding: 10px;
+            vertical-align: middle;
+            border-color: #eee;
+            color: $black;
+        }
+    }
+}
+
+/*-------- Start My Account Page Wrapper --------*/
+
+
+

@@ -1,0 +1,302 @@
+{% extends 'basic.html' %}
+{% block content %}
+{% load static %}
+<div class="breadcrumb-area breadcrumb-area-padding-2 bg-gray-2">
+            <div class="custom-container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li class="active">Checkout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="checkout-area pt-75 pb-75">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="billing-info-wrap padding-20-row-col pt-20">
+                            <h3>Enter Patient Details</h3>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>First Name *</label>
+                                        <input type="text" placeholder="First Name" id="firstname" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>Last Name *</label>
+                                        <input type="text" placeholder="Last Name" id="lastname" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>Date of Sample Collection*</label>
+                                        <input type="date" value="" id="datefield" class="bookdate">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>Time Slot*</label>
+                                        <select id="timefield">
+                                            <option>Select Time Slot</option>
+                                            <option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
+                                            <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                                            <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                                            <option value="01:00 PM - 02:00 PM">01:00 PM - 02:00 PM</option>
+                                            <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
+                                            <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
+                                            <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
+                                            <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+                                            <option value="06:00 PM - 07:00 PM">06:00 PM - 07:00 PM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>Phone *</label>
+                                        <input type="text" placeholder="Phone" id="phone" maxlength="10" minlength="10" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>Age *</label>
+                                        <input type="number" placeholder="Age" >
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>Street Address *</label>
+                                        <input class="billing-address" placeholder="House number and street name" type="text" id="address" required>
+                                        <input placeholder="Apartment, suite, unit, etc. (optional)" type="text" id="landmark">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-122">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>Town / City </label>
+                                        <input type="text" placeholder="We deliver only in Jammu" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="billing-info input-style mb-35">
+                                        <label>Pin Code *</label>
+                                        <input type="text" placeholder="Pin Code" maxlength="6" minlength="6" id="pincode" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="customer-zone mb-30">
+                            <p class="cart-page-title">Have a coupon? <a class="checkout-click3" href="#">Click here to enter your code</a></p>
+                            <div class="checkout-login-info3 input-style">
+                                <form action="#">
+                                    <input type="text" placeholder="Coupon code">
+                                    <button type="submit"><i class="fal fa-gift"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="btn-style-1 pt-10" style="text-align:center;">
+                            <a class="font-size-16 btn-1-padding-4" id="checkout">Pay at Home</a>
+                        </div>
+                        {% comment %} <div class="payment-details-area">
+                            <h4>Payment:</h4>
+                            <div class="payment-method">
+                                <div class="sin-payment payment-selected mb-20">
+                                    <input id="payment_method_1" class="input-radio" type="radio" value="cheque" checked="checked" name="payment_method">
+                                    <label for="payment_method_1">
+                                        <span>
+                                        <img class="nomal-img" src="{% static 'images/icon-img/direct-bank.png' %}" alt="">
+                                        <img class="active-img" src="{% static  'images/icon-img/direct-bank-active.png' %}" alt="">
+                                    </span>
+                                        Pay Now <h5 class="pl-10">Make your payment directly via Netbanking, PayTm, UPI ID or via Credit/Debit Card</h5>
+                                    </label>
+                                </div><div class="sin-payment mb-20">
+                                    <input id="payment-method-3" class="input-radio" type="radio" value="cheque" name="payment_method">
+                                    <label for="payment-method-3">
+                                        <span>
+                                        <img class="nomal-img" src="{% static 'images/icon-img/cash-on-delivery.png' %}" alt=""">
+                                        <img class="active-img" src="{% static 'images/icon-img/cash-on-delivery-active.png' %}" alt=""">
+                                    </span>
+                                        Pay at Home <h5 class="pl-10"> Make your payment by cash upon Sample Collection</h5>
+                                    </label>
+                                </div>
+                            </div>
+                        </div> {% endcomment %}
+                    </div>
+
+                    <div class="col-lg-5" id="ordersum">
+                        <div class="order-summary">
+                            <div class="order-summary-title">
+                                <h3>Order summary</h3>
+                            </div>
+                            <div class="order-summary-top" id="cartlist">
+
+                            </div>
+                            <div id="totalamount">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<script type="text/javascript">
+function hlthpkg(order){
+    return ('<div class="order-summary-img-price"><div class="order-summary-img-title"><div class="order-summary-middle"><h5><a href="/hlthpkgdetails/'+ order.Package.id +'">  '+ order.Package.Name +'</a></h5></div></div><div class="order-summary-price"><span>&#8377;  '+ order.Total_Price +' </span></div></div>');
+}
+
+function tests(order){
+    return ('<div class="order-summary-img-price"><div class="order-summary-img-title"><div class="order-summary-middle"><h5><a href="/testdetails/'+ order.Test.id +'">  '+ order.Test.Name +'</a></h5></div></div><div class="order-summary-price"><span>&#8377;  '+ order.Total_Price +' </span></div></div>');
+}
+
+function ordersum(order){
+    return('<div class="order-summary-middle"><ul><li>Subtotal <h4>&#8377; '+ order.total_amount +' </h4></li><li>Home Collection Charges<h4><span>Free</span><span class="price"> &#8377; 0.00</span></h4></li></ul></div><div class="order-summary-bottom"><h4>Total <span>&#8377;  '+ order.total_amount +' </span></h4></div>');
+}
+
+$(document).ready(function(){
+        function getCookie() {
+            var name = "bToken=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        console.log(getCookie());
+        $.ajax({
+            url  : "/lab/cart",
+            type : "GET",
+            beforeSend: function(request) {
+                request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+            },
+            processData: false,
+            contentType: false,
+            success:function(data){
+                for(var i=0; i<data.length; i++){
+                    if(data[i].Test == null){
+                        document.getElementById("cartlist").innerHTML += hlthpkg(data[i]);
+                    }
+                    else{
+                        document.getElementById("cartlist").innerHTML += tests(data[i]);
+                    }
+                }
+            },
+            error: function () {
+                $("#loginmodalbox").modal('show');
+            }
+        });
+        $.ajax({
+            url  : urllink + "/lab/order",
+            type : "GET",
+            beforeSend: function(request) {
+                request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+            },
+            processData: false,
+            contentType: false,
+            success:function(data){
+                document.getElementById("totalamount").innerHTML = ordersum(data);
+                //const fruits = {Res: data}
+               // const entries = Object.values(fruits);
+               // console.log(entries);
+                //for (const key of entries) {
+//if(key.Tests !== null){
+                       // console.log("Package");
+                    //}
+                    //else{
+                    //    console.log("Test");
+                  //  }
+                //.log(key.Packages);
+                //}
+            },
+            error: function () {
+                console.log('error',Response);
+                alert("Please Login");
+            }
+        });
+
+    $("#checkout").on("click", function(e){
+        e.preventDefault();
+        var datetime= $('.bookdate').val() + ' '+ $("#timefield").val();
+        console.log(datetime);
+        var tdata = new FormData();
+        tdata.append('date',datetime);
+        for (var value of tdata.values()) {
+        console.log(value);
+}
+        var fdata = new FormData()
+        fdata.append('First_Name',$('#firstname').val());
+        fdata.append('Last_Name',$('#lastname').val());
+        fdata.append('Phone',$('#phone').val());
+        fdata.append('Address',$('#address').val());
+        fdata.append('Landmark',$('#landmark').val());
+        fdata.append('PinCode',$('#pincode').val());
+        $.ajax({
+            url  : urllink + "/lab/address",
+            type : "POST",
+            data : fdata,
+            beforeSend: function(request) {
+                    request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+                },
+            processData: false,
+            contentType: false,
+            success:function(Response){
+                $.ajax({
+                    url  : urllink + "/lab/order",
+                    type : "POST",
+                    data : tdata,
+                    beforeSend: function(request) {
+                            request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+                        },
+                    processData: false,
+                    contentType: false,
+                    success:function(Response){
+                        window.location="/ordersummary";
+                        console.log('time',Response);
+
+                    },
+                    error: function (Response) {
+                        console.log('errortime',Response);
+                    }
+                });
+            },
+            error: function (Response) {
+                console.log('addresserror',Response.responseJSON.message);
+            }
+        });
+
+    });
+});
+// Use Javascript
+var today = new Date();
+var dd = today.getDate();
+var nextseven = today.getDate()+10;
+var mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+var yyyy = today.getFullYear();
+if(dd<10){
+    dd='0'+dd
+}
+if(mm<10){
+    mm='0'+mm
+}
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("datefield").setAttribute("min", today);
+var week = new Date();
+if(nextseven<10){
+    dd='0'+nextseven
+}
+week = yyyy+'-'+mm+'-'+nextseven;
+document.getElementById("datefield").setAttribute("max", week);
+
+</script>
+{% endblock %}

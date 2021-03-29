@@ -1,0 +1,146 @@
+{% extends 'basic.html' %}
+{% block content %}
+
+<div class="breadcrumb-area breadcrumb-area-padding-2 bg-gray-2">
+            <div class="custom-container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li>
+                            <a href="/healthpackages">Home Collection</a>
+                        </li>
+                        <li class="active">Health Package</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-details-area padding-30-row-col pt-75 pb-55">
+            <div class="custom-container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-8 col-md-12 col-12">
+                        <div class="product-details-wrap">
+                            <div class="product-details-wrap-top">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-12">
+                                        <div class="product-details-content pro-details-content-pl">
+                                            <div class="pro-details-category">
+                                                <ul>
+                                                    <li><a href="/healthpackages">Health Packages </a>
+                                                </ul>
+                                            </div>
+                                            <h1> {{hlthpkgitem.Name}}</h1>
+
+                                            <p ><span style="color:#082d86;font-weight:bold;"><i class="far fa-info-circle"></i> Pre-test Information :</span>   {{hlthpkgitem.Pre_Test_Information}}</p>
+                                            <p><span style="color:#082d86;font-weight:bold;"><i class="far fa-clock"></i></i> Report Delivery Information :  </span> {{hlthpkgitem.Report_Delivery}}</p>
+
+
+                                        <div class="sidebar-widget sidebar-widget-wrap sidebar-widget-padding-6">
+                                            <p class="blacktags"> {{hlthpkgitem.Tests_includes.count}} Tests included</p>
+                                         <div class="sidebar-tag">
+                                         <ul>
+                                         {% for i in hlthpkgitem.Tests_includes.all %}
+                                         <li><a href="/testdetails/{{i.id}}">{{i.Name}}</a></li>
+                                         {% endfor %}
+                                            </ul>
+                                            </div>
+                                        </div>
+                                            <div class="pro-details-price-short-description">
+                                                <div class="pro-details-price">
+                                                    <span class="new-price">&#8377;  {{hlthpkgitem.Discount_Price}}</span>
+                                                    <span class="old-price">&#8377;  {{hlthpkgitem.Price}}</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="pro-details-action-wrap">
+                                                <div class="pro-details-add-to-cart">
+                                                    <button  class="addpkg" id="{{hlthpkgitem.id}}">Add to cart</button>
+                                                </div>
+                                                <div class="pro-details-add-to-cart pl-10 booknow">
+                                                    <button>Book Now</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-details-wrap-bottom">
+                                <div class="tab-style-1 nav mb-35">
+                                    <a class="active" href="#product-details-1" data-toggle="tab"> Description </a>
+                                    <a href="#product-details-2" data-toggle="tab"> Additional information </a>
+
+                                </div>
+                                <div class="tab-content">
+                                    <div id="product-details-1" class="tab-pane active">
+                                        <div class="product-details-description">
+                                            <p> {{hlthpkgitem.Description}}</p>
+
+                                        </div>
+                                    </div>
+                                    <div id="product-details-2" class="tab-pane">
+                                        <div class="pro-details-additional-information">
+                                            <div class="additional-information">
+                                                <ul>
+                                                    <li><span>Pre-test Information :</span> {{hlthpkgitem.Pre_Test_Information}}</li>
+                                                    <li><span>Report Delivery Information :</span> {{hlthpkgitem.Report_Delivery}}</li>
+                                                    <li><span>Components:</span> {{hlthpkgitem.Test_Components}}</li>
+                                                    <li><span>Method:</span> {{hlthpkgitem.Method}}</li>
+                                                    <li><span>Test Type:</span> {{hlthpkgitem.Test_Type}}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>{% include 'src/filter.html' %}
+                    </div>
+                    </div>
+                    </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+         function getCookie() {
+            var name = "bToken=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        console.log(getCookie());
+    $(".addpkg").on("click", function(e){
+        var pk = this.id;
+    e.preventDefault();
+    $.ajax({
+        url  : urllink + "/lab/add-to-cart",
+        type : "POST",
+        data : JSON.stringify({
+            'id': pk
+        }),
+        beforeSend: function(request) {
+                request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+            },
+        processData: false,
+        dataType: "json",
+        contentType: 'application/json',
+        success:function(Response){
+            console.log(Response);
+            $(".addpkg").html("Added");
+        },
+        error: function (Response) {
+            $("#loginmodalbox").modal('show');
+        }
+    });
+    });
+    });
+    </script>
+                    {% endblock %}

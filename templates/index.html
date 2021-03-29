@@ -1,0 +1,385 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'src/mainslider.html' %}
+{% include 'src/3div.html' %}
+{% load static %}
+
+
+        <div class="product-area">
+            <div class="custom-container">
+                <div class="section-title-btn-wrap mb-35">
+                    <div class="section-title-1">
+                        <h2>Know your Symptoms?</h2>
+                    </div>
+                    <div class="btn-style-2">
+                        <a href="/conditions">View all<i class="far fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="product-slider-active-1 nav-style-2 nav-style-2-modify-2 p-0 ">
+                {% for item in condition %}
+                    <div class="product-plr-1 mywidth">
+                        <div class="single-product-wrap mypad">
+                            <div class="product-img-action-wrap mb-10 circleicon">
+                                <div class="product-img ">
+                                    <a href="conditions/{{item.id}}">
+                                        <img class="default-img" src="/media/{{item.image}}" alt="image">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-content-wrap text-center">
+                                <div class="product-price">
+                                    <a href="conditions/{{item.id}}"><span>{{item.name}}</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="product-area pt-70 ">
+            <div class="custom-container">
+                <div class="section-title-btn-wrap mb-35">
+                    <div class="section-title-1">
+                        <h2>Find experienced doctors across all specialties</h2>
+                    </div>
+                    <div class="btn-style-2">
+                        <a href="/specializations">View all<i class="far fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="product-slider-active-1 nav-style-2 nav-style-2-modify-2 p-0 ">
+                    {% for item in speciality %}
+                    <div class="product-plr-1 mywidth">
+                        <div class="single-product-wrap mypad">
+                            <div class="product-img-action-wrap mb-10 circleicon">
+                                <div class="product-img "><a href="specializations/{{item.id}}">
+                                    <img class="default-img" src="/media/{{item.image}}" alt="image"></a>
+                                </div>
+                            </div>
+                            <div class="product-content-wrap text-center">
+                                <div class="product-price"><a href="specializations/{{item.id}}"><span>{{item.name}}</span></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="product-area pt-80 pb-30">
+            <div class="custom-container">
+                <div class="section-title-btn-wrap mb-35">
+                    <div class="section-title-1">
+                        <h2>Book an appointment for an in-clinic consultation</h2>
+                    </div>
+                    <div class="btn-style-2">
+                        <a href="/doctors">View all doctors<i class="far fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="testimonial-active-1 nav-style-2 nav-style-2-modify-2 ">
+                    {% for item in doc %}
+                    <div class="product-plr-1 ml-15 mr-15">
+                        <div class="single-product-wrap bg-gray">
+                        <div class="row">
+                            <div class="product-img-action-wrap mb-10 col-6">
+
+                                <div class="product-img product-img-zoom">
+                                    <a href="/doctordetails/{{item.id}}">
+                                        <img class="default-img" src="/media/{{item.Profile_pic}}" alt="">
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="product-content-wrap col-6">
+                                <div class="product-category">
+                                    <a href="/doctordetails/{{item.id}}">{{item.Specialization}}</a>
+                                </div>
+                                <h2><a href="/doctordetails/{{item.id}}">{{item.Name}}</a></h2>
+
+                                        <span class="new-price"> {{item.week_timing}}</span>
+                                <div class="product-price">
+                                    <span>&#8377; {{item.Fee}} </span>
+                                </div>
+                                    <div class="btn-style-1 pt-5">
+                                        <a class="font-size-8 btn-1-padding-2" href="/doctordetails/{{item.id}}">Book Now</a>
+                                    </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="product-area pt-70 pb-75">
+            <div class="custom-container">
+                <div class="product-area-border">
+                    <div class="section-title-timer-wrap">
+                        <div class="section-title-1">
+                            <h2>Health Packages</h2>
+                        </div>
+                    </div>
+                    <div class="product-slider-active-1 nav-style-2">
+{% for item in hlthpkgitem %}
+                        <div class="product-plr-1">
+                            <div class="single-product-wrap mypadding">
+                                <div class="product-badges product-badges-mrg">
+                                    <span class="discount red">26%</span>
+                                </div>
+                                <div class="product-content-wrap">
+                                    <div class="product-category">
+                                        <a href="/healthpackages">Category</a>
+                                    </div>
+                                    <h2><a href="/hlthpkgdetails/{{item.id}}">{{item.Name}}</a></h2>
+                                    <p class="blacktags">{{item.Tests_includes.count}} tests included</p>
+                                    <div class="product-price">
+                                        <span class="new-price">&#8377; {{item.Discount_Price}}</span>
+                                        <span class="old-price">&#8377; {{item.Price}}</span>
+                                    </div>
+                                    <div class="btn-style-1 pt-10">
+                                                <a class="font-size-14 btn-1-padding-2 addpkg" id="{{item.id}}">ADD</a>
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+{% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="banner-area padding-30-row-col pb-45">
+            <div class="custom-container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="banner-wrap mb-30">
+                            <div class="banner-img banner-img-zoom">
+                                <a href="product-details.html"><img src="{% static 'images/banner/banner-6.jpg' %}" alt=""></a>
+                            </div>
+                            <div class="banner-content-2">
+                                <h2>Health package</h2>
+
+                                <h5 class="d-none d-sm-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </h5>
+                                <p class="blacktags">6 Tests included</p>
+                                <h4>&#8377; 900.00</h4>
+                                <div class="btn-style-1">
+                                    <a class="font-size-14 btn-1-padding-2" href="product-details.html">Schedule now </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="banner-wrap mb-30">
+                            <div class="banner-img banner-img-zoom">
+                                <a href="product-details.html"><img src="{% static 'images/banner/banner-7.jpg' %}" alt=""></a>
+                            </div>
+                            <div class="banner-content-3">
+                                <h2>Health package</h2>
+                                <p class="blacktags">6 Tests included</p>
+                                <h4>&#8377; 900.00</h4>
+                                <div class="btn-style-1">
+                                    <a class="font-size-14 btn-1-padding-2" href="product-details.html">Schedule now </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-area pt-20 pb-25">
+            <div class="custom-container">
+                <div class="product-area-border">
+                    <div class="section-title-timer-wrap">
+                        <div class="section-title-1">
+                            <h2>Tests</h2>
+                        </div>
+
+                    </div>
+                    <div class="product-slider-active-test nav-style-2 ">
+                    {% for item in testitem %}
+                        <div class="product-plr-1">
+                            <div class="single-product-wrap mypadding">
+                                <div class="product-badges product-badges-mrg">
+                                    <span class="discount red">26%</span>
+                                </div>
+                                <div class="product-content-wrap">
+                                    <div class="product-category">
+                                        <a href="/tests">Category</a>
+                                    </div>
+                                    <h2><a href="/testdetails/{{item.id}}">{{item.Name}}</a></h2>
+                                    <div class="product-price">
+                                        <span class="new-price">&#8377; {{item.Discount_Price}}</span>
+                                        <span class="old-price">&#8377; {{item.Price}}</span>
+                                    </div>
+                                    <div class="btn-style-1 pt-10">
+                                                <a class="font-size-14 btn-1-padding-2 addtest" id="{{item.id}}">ADD</a>
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="testimonial-area pt-40 pb-75">
+            <div class="custom-container">
+                <div class="section-title-btn-wrap mb-35">
+                    <div class="section-title-1">
+                        <h2>What our clients are saying</h2>
+                    </div>
+                    {% comment %} <div class="btn-style-2 mrg-top-xs">
+                        <a href="/reviews">View all reviews <i class="far fa-long-arrow-right"></i></a>
+                    </div> {% endcomment %}
+                </div>
+                <div class="testimonial-active-1 nav-style-2 nav-style-2-modify-1">
+                    <div class="testimonial-plr-1">
+                        <div class="single-testimonial">
+                            <h4>Great quality!</h4>
+                            <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                            <div class="client-info">
+                                <h5>Name</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-plr-1">
+                        <div class="single-testimonial">
+                            <h4>Great quality!</h4>
+                            <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                            <div class="client-info">
+                                <h5>Name</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-plr-1">
+                        <div class="single-testimonial">
+                            <h4>Great quality!</h4>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                            <div class="client-info">
+                                <h5>Name</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-plr-1">
+                        <div class="single-testimonial">
+                            <h4>Great quality!</h4>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                            <div class="client-info">
+                                <h5>Name</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-area bg-blue">
+            <div class="custom-container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-12 col-sm-6">
+                        <div class="single-contact-wrap text-center">
+                            <h4>Store location</h4>
+                            <p> Jammu</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-12 col-sm-6">
+                        <div class="single-contact-wrap text-center">
+                            <h4>Work inquiries</h4>
+                            <p> hello@medcare.com</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-12 col-sm-6">
+                        <div class="single-contact-wrap text-center">
+                            <h4>Call us</h4>
+                            <p> 800 388 80 90</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-12 col-sm-6">
+                        <div class="single-contact-wrap text-center">
+                            <h4>Open hours</h4>
+                            <p> Mon-Sat : 08.00 - 18.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<script type="text/javascript">
+        setTimeout(function() {
+            function getCookie() {
+            var name = "bToken=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        console.log(getCookie());
+        console.log('hfrgtegtregh');
+    $(".addpkg").on("click", function(e){
+        console.log('hfgh');
+        $ths = $(this);
+        var pk = this.id;
+        console.log(pk);
+        e.preventDefault();
+        $.ajax({
+            url  : urllink + "/lab/add-to-cart",
+            type : "POST",
+            data : JSON.stringify({
+                'id': pk
+            }),
+            beforeSend: function(request) {
+                    request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+                },
+            processData: false,
+            dataType: "json",
+            contentType: 'application/json',
+            success:function(Response){
+                console.log(Response);
+                $ths.html("Added");
+            },
+            error: function (Response) {
+                $("#loginmodalbox").modal('show');
+            }
+        });
+    });
+    $(".addtest").on("click", function(e){
+        var pk = this.id;
+        $ths = $(this);
+        console.log(pk);
+            e.preventDefault();
+            $.ajax({
+                url  : urllink + "/lab/add-to-cart",
+                type : "POST",
+                data : JSON.stringify({
+                    'test': true,
+                    'id': pk
+                }),
+                beforeSend: function(request) {
+                        request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+                    },
+                processData: false,
+                dataType: "json",
+                contentType: 'application/json',
+                success:function(Response){
+                    console.log(Response);
+                    $ths.html("Added");
+                },
+                error: function (Response) {
+                    $("#loginmodalbox").modal('show');
+                }
+            });
+    });
+}, 1000);
+    </script>
+{% endblock %}
+

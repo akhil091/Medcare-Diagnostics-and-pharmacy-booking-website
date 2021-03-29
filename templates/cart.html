@@ -1,0 +1,195 @@
+{% extends 'basic.html' %}
+{% block content %}
+{% load static %}
+<div class="breadcrumb-area breadcrumb-area-padding-2 bg-gray-2">
+            <div class="custom-container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li class="active"> Cart</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="login-register-area pt-75 pb-75" id="emptycart" style="display:none;">
+            <div class="container">
+                <div class="row">
+                        <div>
+                            <img src="{% static 'icons/undraw_empty_cart_co35.svg' %}" alt="icon"  style="display: block;margin-left: auto;margin-right: auto;width: 20%;" alt="svg">
+                            <h3 class="pt-20 text-center">Your cart is empty.</h3>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-area pt-75 pb-35" id="cartlist">
+            <div class="container">
+                <div class="row pb-40">
+                    <div class="col-12">
+                        <form action="#">
+                            <div class="cart-table-content">
+                                <div class="table-content table-responsive">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="width-name"> Item</th>
+                                                <th class="width-price"> Original Price</th>
+                                                <th class="width-subtotal"> Discount Price</th>
+                                                <th class="width-remove"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="cart_list">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="coupon-wrap mb-40">
+                            <h4>Coupon Discount </h4>
+                            <div class="coupon-content common-form-style">
+                                <p>Enter your coupon code if you have one. </p>
+                                <div class="input-style coupon-content-mrg">
+                                    <input type="text" placeholder="Coupon code">
+                                </div>
+                                <div class="common-btn-style">
+                                    <a class="common-btn-padding-2" href="#">Apply coupon</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12" id="billamount">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+<script type="text/javascript">
+function cart(order){
+    return ('<tr><td class="product-name"><h5><a href="/hlthpkgdetails/'+ order.Package.id +'">'+ order.Package.Name +'</a></h5></td><td class="product-price"><span class="amount" style="text-decoration:line-through;">&#8377; '+ order.Original_Price +'</span></td><td class="product-total"><span>&#8377; '+ order.Total_Price +' </span></td><td class="product-remove"><a class="remove" id="'+ order.id  +'">Remove</a></td></tr>');
+}
+
+function testcart(order){
+    return ('<tr><td class="product-name"><h5><a href="/testdetails/'+ order.Test.id +'">'+ order.Test.Name +'</a></h5></td><td class="product-price"><span class="amount" style="text-decoration:line-through;">&#8377; '+ order.Original_Price +'</span></td><td class="product-total"><span>&#8377; '+ order.Total_Price +' </span></td><td class="product-remove"><a class="remove" id="'+ order.id  +'">Remove</a></td></tr>');
+}
+function billamount(orders){
+    return('<div class="grand-total-wrap mb-40"><ul><li>Subtotal <h4>&#8377; '+ orders.total_amount +' </h4></li><li>Home Collection Fee<h4><span>Free</span>&#8377; 0.00</h4></li></ul><div class="grand-total"><h4>Total <span>&#8377; '+ orders.total_amount +' </span></h4></div><div class="grand-total-btn"><a href="/checkout">Checkout</a></div></div>');
+}
+    $(document).ready(function(){
+        function getCookie() {
+            var name = "bToken=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        $.ajax({
+            url  : urllink +  "/lab/cart",
+            type : "GET",
+            beforeSend: function(request) {
+                request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+            },
+            processData: false,
+            contentType: false,
+            success:function(data){
+                if(data.length==null){
+                    console.log('ugiou');
+                    $("#emptycart").show();
+                    $("#cartlist").hide();
+                    console.log('ugiou');
+                }
+                else{
+                    for(var i=0; i<data.length; i++){
+                        if(data[i].Test == null){
+                            console.log("Package");
+                            document.getElementById("cart_list").innerHTML += cart(data[i]);
+                        }
+                        else{
+                            console.log("Test");
+                            document.getElementById("cart_list").innerHTML += testcart(data[i]);
+                        }
+                    }
+                }
+            },
+            error: function () {
+                window.location="/signin";
+            }
+        });
+        $.ajax({
+            url  : urllink + "/lab/order",
+            type : "GET",
+            beforeSend: function(request) {
+                request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+            },
+            processData: false,
+            contentType: false,
+            success:function(data){
+                document.getElementById("billamount").innerHTML = billamount(data);
+            },
+            error: function () {
+                console.log('error',Response);
+            }
+        });
+    });
+    setTimeout(function() {
+        console.log("fdgfdg");
+        function getCookie() {
+            var name = "bToken=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        $(".remove").on("click", function(e){
+            console.log('hfgh');
+            $ths = $(this).closest("tr");
+            var pk = this.id;
+            console.log(pk);
+            e.preventDefault();
+            $.ajax({
+                url  : urllink + "/lab/remove-from-cart",
+                type : "POST",
+                data : JSON.stringify({
+                    'id': pk
+                }),
+                beforeSend: function(request) {
+                        request.setRequestHeader('Authorization', 'Token ' + getCookie()+'');
+                    },
+                processData: false,
+                dataType: "json",
+                contentType: 'application/json',
+                success:function(Response){
+                    console.log(Response);
+                    window.location.reload();
+                },
+                error: function (Response) {
+                    $("#loginmodalbox").modal('show');
+                }
+            });
+        });
+    },1000);
+    </script>
+{% endblock %}

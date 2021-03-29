@@ -1,0 +1,374 @@
+/*-------- 5. Banner style ---------*/
+
+.banner-wrap {
+    position: relative;
+    .banner-img {
+        position: relative;
+        overflow: hidden;
+        a {
+            display: block;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .banner-img-zoom {
+        a {
+            display: block;
+            img {
+                width: 100%;
+                transition: all 1.5s cubic-bezier(0,0,.2,1);
+            }
+        }
+    }
+    .banner-content-1 {
+        position: absolute;
+        left: 30px;
+        top: 11%;
+        @media #{$lg-layout} {
+            left: 20px;
+        } 
+        @media #{$md-layout} {
+            left: 20px;
+        }
+        @media #{$xs-layout} {
+            left: 20px;
+            top: 10%;
+        } 
+        span {
+            display: block;
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0 12px;
+            @media #{$xl-layout} {
+                font-size: 21px;
+            }
+            @media #{$lg-layout} {
+                font-size: 20px;
+                margin: 4px 0 5px;
+            } 
+            @media #{$md-layout} {
+                font-size: 20px;
+                margin: 4px 0 8px;
+            } 
+            @media #{$xs-layout} {
+                font-size: 20px;
+                margin: 5px 0 7px;
+            } 
+        }
+        h3 {
+            font-size: 24px;
+            font-weight: bold;
+            color: $theme-color-red;
+            margin: 0px 0 26px;
+            span {
+                color: #696969;
+                margin-left: 2px;
+                display: inline-block;
+                font-size: 14px;
+                text-decoration: line-through;
+                font-weight: 400;
+            }
+            @media #{$lg-layout} {
+                font-size: 22px;
+                margin: 0px 0 10px;
+            } 
+            @media #{$md-layout} {
+                font-size: 20px;
+                margin: 0px 0 15px;
+            } 
+            @media #{$xs-layout} {
+                font-size: 20px;
+                margin: 0px 0 12px;
+            } 
+        }
+    }
+    .banner-content-2 {
+        position: absolute;
+        left: 30px;
+        top: 40px;
+        @media #{$lg-layout} {
+            top: 20px;
+        } 
+        @media #{$md-layout} {
+            top: 25px;
+        }  
+        @media #{$xs-layout} {
+            left: 20px;
+            top: 5px;
+        }  
+        @media #{$sm-layout} {
+            top: 25px;
+        } 
+        h2 {
+            font-size: 48px;
+            margin: 0;
+            &.font-size-dec {
+                font-size: 40px;
+                @media #{$xx-layout} {
+                    font-size: 33px;
+                } 
+                @media #{$xl-layout} {
+                    font-size: 30px;
+                } 
+                @media #{$lg-layout} {
+                    font-size: 24px;
+                } 
+                @media #{$md-layout} {
+                    font-size: 27px;
+                } 
+                @media #{$xs-layout} {
+                    font-size: 17px;
+                } 
+                @media #{$sm-layout} {
+                    font-size: 22px;
+                } 
+            }
+            @media #{$lg-layout} {
+                font-size: 35px;
+            } 
+            @media #{$md-layout} {
+                font-size: 35px;
+            } 
+            @media #{$xs-layout} {
+                font-size: 20px;
+            } 
+        }
+        h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0 10px;
+            line-height: 1;
+            margin: 13px 0 13px;
+            @media #{$lg-layout} {
+                font-size: 20px;
+                margin: 8px 0 13px;
+            } 
+            @media #{$md-layout} {
+                font-size: 22px;
+            } 
+            @media #{$xs-layout} {
+                font-size: 17px;
+                margin: 7px 0 8px;
+            } 
+        }
+        h4 {
+            font-size: 24px;
+            font-weight: bold;
+            color: $theme-color-red;
+            margin: 0 0 26px;
+            @media #{$lg-layout} {
+                margin: 0 0 15px;
+            } 
+            @media #{$xs-layout} {
+                margin: 5px 0 5px;
+                font-size: 20px;
+            } 
+        }
+    }
+    .banner-content-3 {
+        position: absolute;
+        left: 30px;
+        top: 30px;
+        @media #{$lg-layout} {
+            top: 25px;
+        } 
+        @media #{$xs-layout} {
+            left: 20px;
+            top: 15px;
+        } 
+        span {
+            font-size: 15px;
+            text-transform: uppercase;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 36px;
+            margin: 3px 0 6px;
+            width: 70%;
+            @media #{$lg-layout} {
+                font-size: 22px;
+                line-height: 32px;
+            }
+            @media #{$xs-layout} {
+                font-size: 22px;
+                width: 100%;
+            }
+        }
+        h4 {
+            font-size: 24px;
+            font-weight: bold;
+            color: $theme-color-blue;
+            margin: 0 0 30px;
+            &.red {
+                color: $theme-color-red;
+            }
+            @media #{$lg-layout} {
+                margin: 0 0 12px;
+                font-size: 20px;
+            }
+            @media #{$xs-layout} {
+                margin: 0 0 20px;
+                font-size: 22px;
+            }
+        }
+    }
+    .banner-badge {
+        width: 74px;
+        height: 74px;
+        line-height: 74px;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255, 213, 90);
+        h3 {
+            color: $black;
+            margin: 0;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1;
+            span {
+                display: block;
+                line-height: 1;
+                font-weight: 700;
+                font-size: 20px;
+                margin: 0 0 3px;
+            }
+        }
+        &.banner-badge-position1 {
+            position: absolute;
+            bottom: 12%;
+            left: 45%;
+            @media #{$xs-layout} {
+                left: 65%;
+            }
+        }
+        &.banner-badge-position2 {
+            position: absolute;
+            top: 14%;
+            right: 8%;
+            @media #{$xx-layout} {
+                top: 40%;
+            } 
+            @media #{$xl-layout} {
+                top: 40%;
+            } 
+            @media #{$lg-layout} {
+                top: 50%;
+            } 
+            @media #{$md-layout} {
+                top: 50%;
+            } 
+            @media #{$xs-layout} {
+                top: 47%;
+            } 
+        }
+    }
+    .banner-badge-2 {
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255, 213, 90);
+        @media #{$xs-layout} {
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+        }
+        h3 {
+            color: $black;
+            margin: 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1;
+            @media #{$xs-layout} {
+                font-size: 16px;
+            }
+            span {
+                display: block;
+                line-height: 1;
+                font-weight: 700;
+                font-size: 30px;
+                margin: 0 0 3px;
+                @media #{$xs-layout} {
+                    font-size: 18px;
+                }
+            }
+        }
+        &.banner-badge-2-modify-1 {
+            width: 74px;
+            height: 74px;
+            line-height: 74px;
+            h3 {
+                font-size: 16px;
+                span {
+                    font-size: 20px
+                }
+            }
+        }
+        &.banner-badge-2-position1 {
+            position: absolute;
+            bottom: 10%;
+            left: 45%;
+            @media #{$xs-layout} {
+                bottom: 8%;
+                left: 70%;
+            }
+        }
+    }
+    &:hover {
+        .banner-img-zoom {
+            a {
+                img {
+                    transform: scale3d(1.1,1.1,1.1);
+                }
+            }
+        }
+        .btn-style-1 {
+            a {
+                background-color: $theme-color-red;
+            }
+        }
+    }
+}
+
+@media #{$lg-layout} {
+    .banner-area-mt {
+        margin-top: 10px;
+    }
+} 
+
+@media #{$md-layout} {
+    .banner-area-mt {
+        margin-top: 10px;
+    }
+} 
+
+@media #{$xs-layout} {
+    .banner-area-mt {
+        margin-top: 10px;
+    }
+    .banner-area {
+        &.pb-45 {
+            padding-bottom: 30px;
+        }
+        &.pb-40 {
+            padding-bottom: 25px;
+        }
+    }
+} 
+
+
+
+

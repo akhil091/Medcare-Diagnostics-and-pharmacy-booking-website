@@ -1,0 +1,299 @@
+/*-------- 12. Others style ---------*/
+
+.tm-demo-options-wrapper {
+	position: fixed;
+	top: 0;
+	left: 100%;
+	background: #fff;
+	height: 100%;
+	width: 350px;
+	max-width: calc(100% - 45px);
+	z-index: 999;
+	transition: all .5s;
+    @media #{$xs-layout} {
+        width: 300px;
+    }
+    .tm-demo-options-toolbar {
+        position: absolute;
+        top: 200px;
+        right: 100%;
+        display: block;
+        width: 40px;
+        line-height: 60px;
+        border: 1px solid #eee;
+        border-right: 0;
+        border-radius: 5px 0 0 5px;
+        background: #fff;
+        text-align: center;
+        box-shadow: -3px 0 10px -2px rgba(0,0,0,.1);
+        a {
+            display: block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            color: #111;
+            position: relative;
+            z-index: 99;
+            i {
+                font-size: 16px;
+            }
+        }
+    }
+    &.demo-open {
+        transform: translateX(-100%) translateX(15px);
+        box-shadow: -3px 0 50px -2px rgba(0,0,0,.14);
+    }
+    .tm-demo-panel {
+        padding: 35px 30px;
+        height: 100%;
+        overflow-y: auto;
+        @media #{$xs-layout} {
+            padding: 35px 35px 35px 20px;
+        }
+        .tm-demo-panel-header {
+            margin-bottom: 40px;
+            h3 {
+                font-size: 15px;
+                font-weight: 700;
+                margin: 0;
+                text-transform: uppercase;
+                letter-spacing: 1.38px;
+                line-height: 1.4;
+            }
+            p {
+                color: #444;
+                line-height: 1.74;
+                margin: 14px 0 20px;
+            }
+            .tm-demo-btn {
+                a {
+                    display: inline-block;
+                    font-size: 15px;
+                    color: $white;
+                    font-weight: 700;
+                    background-color: $theme-color-blue;
+                    border-radius: 26px;
+                    padding: 10px 28px;
+                    i {
+                        font-size: 16px;
+                        margin-right: 14px;
+                    }
+                    &:hover {
+                        background-color: $theme-color-red;
+                    }
+                }
+            }
+        }
+        .quick-option-list {
+            a {
+                display: inline-block;
+                margin-bottom: 20px;
+                img {
+                    width: 100%;
+                    transition: all .3s;
+                    box-shadow: 0 7px 20px rgba(0,0,0,.1);
+                    border-radius: 5px;
+                    &:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0 10px 25px rgba(0,0,0,.2);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.tooltip-style-2 {
+    > a {
+        position: relative;
+        &:after {
+            bottom: 50%;
+            right: 100%;
+            position: absolute;
+            white-space: nowrap;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 8px 10px;
+            color: $white;
+            margin-bottom: -15px;
+            background-color: #000;
+            content: attr(aria-label);
+            line-height: 1.3;
+            transition-delay: .1s;
+            box-shadow: 4px 4px 8px rgba(0,0,0,.3);
+            transition: opacity .3s ease,visibility .3s ease,transform .3s cubic-bezier(.71,1.7,.77,1.24),-webkit-transform .3s cubic-bezier(.71,1.7,.77,1.24);
+            opacity: 0;
+            visibility: hidden;
+            transform: translate3d(0,0,0);
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            right: 100%;
+            bottom: 50%;
+            transition-delay: .1s;
+            border: 7px solid transparent;
+            border-left-color: #000;
+            z-index: 9;
+            margin-right: -13px;
+            margin-bottom: -7px;
+            transition-delay: .1s;
+            transition: opacity .3s ease,visibility .3s ease,transform .3s cubic-bezier(.71,1.7,.77,1.24),-webkit-transform .3s cubic-bezier(.71,1.7,.77,1.24);
+            opacity: 0;
+            visibility: hidden;
+        }
+        &:hover {
+            &:after {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-8px);
+            }
+            &:before {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-8px);
+            }
+        }
+    }
+}
+
+.medizin-common-style-wrap {
+    .medizin-common-img-style {
+        img {
+            width: 100%;
+        }
+        @media #{$xs-layout} {
+            &.mb-35 {
+                margin-bottom: 15px;
+            }
+        }
+    }
+    .medizin-common-paragraph-style {
+        margin: 0 0 40px;
+        &.paragraph-mrg-dec {
+            margin: 0 0 18px;
+        }
+        @media #{$xs-layout} {
+            margin: 0 0 25px;
+        } 
+        h2 {
+            font-size: 30px;
+            font-weight: 700;
+            margin: 0 0 19px;
+            @media #{$lg-layout} {
+                font-size: 25px;
+                margin: 0 0 15px;
+            } 
+            @media #{$md-layout} {
+                font-size: 25px;
+                margin: 0 0 15px;
+            } 
+            @media #{$xs-layout} {
+                font-size: 21px;
+                margin: 0 0 10px;
+            } 
+        }
+        h4 {
+            font-weight: 700;
+            color: #444;
+            font-size: 15px;
+            margin: 20px 0 0;
+        }
+        h3 {
+            font-weight: 700;
+            color: $black;
+            font-size: 26px;
+            margin: 0px 0 16px;
+            @media #{$lg-layout} {
+                font-size: 23px;
+            } 
+            @media #{$md-layout} {
+                font-size: 23px;
+            } 
+            @media #{$xs-layout} {
+                font-size: 20px;
+            } 
+        }
+        p {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.74;
+            margin: 0;
+            a {
+                color: #444;
+                font-weight: 700;
+            }
+            &.paragraph-mrg-top {
+                margin-top: 18px;
+            }
+        }
+        .medizin-common-list {
+            ul {
+                padding: 0 0 0 15px;
+                li {
+                    margin: 0 0 11px;
+                    font-size: 15px;
+                    color: #444;
+                    list-style: disc;
+                    &:last-child {
+                        margin: 0 0 0px;
+                    }
+                }
+            }
+            &.medizin-common-list-mrg-1 {
+                margin: 20px 0 0;
+            }
+        }
+        .medizin-common-list-2 {
+            ul {
+                padding: 0 0 0 30px;
+                li {
+                    margin: 0 0 14px;
+                    font-size: 15px;
+                    color: #444;
+                    line-height: 1.74;
+                    list-style: decimal;
+                    &:last-child {
+                        margin: 0 0 0px;
+                    }
+                }
+            }
+            &.medizin-common-list-mrg-2 {
+                margin: 20px 0 0;
+                @media #{$xs-layout} {
+                    margin: 15px 0 0;
+                }
+            }
+            &.medizin-common-list-mrg-3 {
+                margin: 28px 0 0;
+                @media #{$xs-layout} {
+                    margin: 15px 0 0;
+                }
+            }
+        }
+        span {
+            font-size: 15px;
+            color: #444;
+            font-style: italic;
+            margin: 18px 0 0;
+            display: block;
+            @media #{$xs-layout} {
+                margin: 7px 0 0;
+            }
+        }
+    }
+}
+
+@media #{$xs-layout} {
+    .purchase-guide-area , 
+    .privacy-policy-area , 
+    .terms-of-service-area {
+        &.pb-35 {
+            padding-bottom: 20px;
+        }
+    }
+}
+
+
+

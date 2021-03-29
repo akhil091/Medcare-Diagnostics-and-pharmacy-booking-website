@@ -1,0 +1,407 @@
+/*-------- 19. About us style ---------*/
+
+.about-us-img {
+    img {
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0px 23px 26px 0px rgba(0,0,0,.15);
+        position: relative;
+        z-index: 9;
+    }
+}
+.about-us-content {
+    margin: 0 0 0 90px;
+    position: relative;
+    z-index: 9;
+    @media #{$xl-layout} {
+        margin: 0 0 0 50px;
+    }
+    @media #{$lg-layout} {
+        margin: 0 0 0 0px;
+    }
+    @media #{$md-layout} {
+        margin: 50px 0 0 0px;
+    }
+    @media #{$xs-layout} {
+        margin: 30px 0 0 0px;
+    }
+    .total-years {
+        display: flex;
+        align-items: flex-end;
+        h2 {
+            font-size: 200px;
+            font-weight: 900;
+            line-height: .8em;
+            color: $theme-color-blue;
+            margin: 0;
+            @media #{$xl-layout} {
+                font-size: 130px;
+            }
+            @media #{$lg-layout} {
+                font-size: 100px;
+            }
+            @media #{$md-layout} {
+                font-size: 100px;
+            }
+            @media #{$xs-layout} {
+                font-size: 80px;
+            }
+        }
+        h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 2em;
+            letter-spacing: 2px;
+            color: #444;
+            margin: 0 0 0 12px;
+        }
+    }
+    h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 25px 0 28px;
+        @media #{$xs-layout} {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 18px 0 18px;
+        }
+    }
+    p {
+        font-size: 18px;
+        color: #444;
+        line-height: 1.67em;
+        margin: 0 0 28px;
+        @media #{$lg-layout} {
+            font-size: 16px;
+            margin: 0 0 20px;
+        }
+        @media #{$md-layout} {
+            color: #555;
+        }
+        @media #{$xs-layout} {
+            font-size: 16px;
+            margin: 0 0 20px;
+            color: #555;
+        }
+    }
+    .about-btn {
+        a {
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 26px;
+            padding: 0 36px;
+            padding: 13px 36px;
+            background-color: #edf4fe;
+            color: $theme-color-blue;
+            i {
+                font-size: 16px;
+                margin-left: 10px;
+            }
+            &:hover {
+                color: $white;
+                background-color: $theme-color-blue;
+            }
+        }
+    }
+}
+
+.about-us-img {
+	background-image: url("../../assets/images/bg/bg-2.png");
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	background-size: auto;
+}
+
+.medizin-box {
+	padding: 32px 37px 36px;
+	background: $white;
+	border-radius: 5px;
+    transition: all .25s cubic-bezier(.645,.045,.355,1);
+    @media #{$md-layout} {
+        padding: 32px 20px 20px;
+    }
+    @media #{$xs-layout} {
+        padding: 32px 15px 20px;
+    }
+    .icon-box-wrapper {
+        .medizin-icon-wrap {
+            svg {
+                width: 56px;
+                height: 56px;
+                @media #{$md-layout} {
+                    width: 50px;
+                    height: 50px;
+                }
+                @media #{$xs-layout} {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+        }
+        .icon-box-content {
+            .title {
+                margin: 25px 0 23px;
+                @media #{$md-layout} {
+                    margin: 20px 0 17px;
+                }
+                @media #{$xs-layout} {
+                    margin: 20px 0 17px;
+                }
+                h3 {
+                    font-size: 24px;
+                    font-weight: 500;
+                    margin: 0;
+                    @media #{$md-layout} {
+                        font-size: 20px;
+                    }
+                    @media #{$xs-layout} {
+                        font-size: 20px;
+                    }
+                }
+            }
+            ul {
+                padding-left: 15px;
+                li {
+                    color: #444;
+                    font-size: 15px;
+                    list-style: disc;
+                    margin: 0 0 13px;
+                }
+            }
+        }
+    }
+    &:hover {
+        box-shadow: 0 0 40px rgba(51,51,51,.1);
+    }
+} 
+
+.funfact-area {
+    background-color: #497bc2;
+    .single-funfact {
+        h2 {
+            font-size: 64px;
+            color: $white;
+            margin: 0 0 22px;
+            line-height: 50px;
+            @media #{$lg-layout} {
+                font-size: 55px;
+            }
+            @media #{$md-layout} {
+                font-size: 50px;
+                margin: 0 0 15px;
+            }
+            @media #{$xs-layout} {
+                font-size: 45px;
+                margin: 0 0 5px;
+            }
+        }
+        span {
+            color: $white;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 2em;
+            letter-spacing: 2px;
+            @media #{$md-layout} {
+                letter-spacing: 1px;
+            }
+        }
+    }
+}
+.team-wrap {
+    .team-img {
+        position: relative;
+        overflow: hidden;
+        img {
+            width: 100%;
+            transition: all 1.5s cubic-bezier(0,0,.2,1);
+        }
+        .team-social {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 20px;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .25s cubic-bezier(.645,.045,.355,1);
+            a {
+                display: inline-block;
+                color: #696969;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                border-radius: 50px;
+                background-color: $white;
+                margin: 0 2px;
+                &:hover {
+                    background-color: $theme-color-blue;
+                    color: $white;
+                }
+            }
+        }
+        @media #{$xs-layout} {
+            &.mb-25 {
+                margin-bottom: 10px; 
+            }
+        }
+    }
+    .team-info {
+        h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0 0 8px;
+            @media #{$xs-layout} {
+                margin: 0 0 5px;
+            }
+        }
+        span {
+            font-size: 15px;
+            color: #555;
+            display: block;
+        }
+    }
+    &:hover {
+        .team-social {
+            opacity: 1;
+            visibility: visible;
+        }
+        .team-img {
+            img {
+                transform: scale3d(1.1,1.1,1.1);
+            }
+        }
+    }
+    @media #{$xs-layout} {
+        &.mb-45 {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+.about-us-area {
+    position: relative;
+    .mouse-scroll-area-2 {
+        position: absolute;
+        top: 0% !important;
+        left: 0 !important;
+        z-index: 8 !important;
+        width: 100% !important;
+        height: 100% !important;
+        .about-us-shape-1 {
+            position: absolute;
+            top: 69% !important;
+            left: 15% !important;
+            z-index: 8;
+            @media #{$xl-layout} {
+                top: 75% !important;
+            }
+            @media #{$md-layout} {
+                top: 50% !important;
+                left: 55% !important;
+            }
+            @media #{$xs-layout} {
+                top: 38% !important;
+                left: 55% !important;
+            }
+            @media #{$sm-layout} {
+                top: 50% !important;
+                left: 50% !important;
+            }
+            .medizin-shape {
+                width: 150px;
+                height: 150px;
+                color: #4e97fd;
+                border-radius: 50%;
+                background: currentColor;
+                @media #{$xs-layout} {
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+        }
+    }
+}
+.return-policy-content {
+    .return-policy-img {
+        margin: 0 0 29px;
+        @media #{$xs-layout} {
+            margin: 0 0 19px;
+        }
+        img {
+            width: 100%;
+        }
+    } 
+    h2 {
+        font-size: 34px;
+        font-weight: 700;
+        margin: 0 0 20px;
+        @media #{$xs-layout} {
+            font-size: 30px;
+            margin: 0 0 10px;
+        }
+    }
+    p {
+        line-height: 1.74;
+        font-size: 15px;
+        margin: 0 0 25px;
+        @media #{$xs-layout} {
+            margin: 0 0 15px;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@media #{$xs-layout} {
+    .mision-area {
+        &.pb-70 {
+            padding-bottom: 30px;
+        }
+    }
+    .funfact-area {
+        &.pb-60 {
+            padding-bottom: 25px;
+        }
+    }
+    .team-area {
+        &.pb-40 {
+            padding-bottom: 20px;
+        }
+    }
+    .about-us-area {
+        &.pt-65 {
+            padding-top: 50px;
+        }
+    } 
+    .mision-area {
+        &.pt-65 {
+            padding-top: 50px;
+        }
+        &.pb-45 {
+            padding-bottom: 30px;
+        }
+    }
+    .testimonial-area {
+        &.pt-65 {
+            padding-top: 55px;
+        }
+        &.pb-65 {
+            padding-bottom: 40px;
+        }
+    }
+    .team-area {
+        &.pt-65 {
+            padding-top: 55px;
+        }
+        &.pb-65 {
+            padding-bottom: 40px;
+        }
+    }
+}
+
+

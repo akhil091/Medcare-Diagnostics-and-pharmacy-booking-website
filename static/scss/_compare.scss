@@ -1,0 +1,122 @@
+/*-------- 23. Compare style ---------*/
+
+.compare-table {
+    & .table {
+        thead {
+            tr {
+                border: none;
+                background-color: #f8f8f8;
+                th {
+                    border: none;
+                    padding: 13px 20px;
+                    a {
+                        &.title {
+                            color: $black;
+                            font-size: 15px;
+                            font-weight: 400;
+                            &:hover {
+                                color: $theme-color-blue;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        & tbody {
+            & tr {
+                border: none;
+                margin-bottom: 20px;
+                & td {
+                    vertical-align: middle;
+                    border: none;
+                    padding: 13px 20px;
+                    color: #444;
+                    font-size: 15px;
+                    @media #{$xs-layout} {
+                        min-width: 240px;
+                    }
+                    &.first-column {
+                        min-width: 200px;
+                        font-size: 15px;
+                        text-transform: uppercase;
+                        margin: 0;
+                        padding: 15px 30px;
+                        text-align: center;
+                        background-color: #f8f8f8;
+                        @media #{$md-layout} {
+                            min-width: 100px;
+                        }
+                        @media #{$xs-layout} {
+                            min-width: 100px;
+                            overflow: hidden;
+                        }
+                    }
+                    &.compare-rating {
+                        i {
+                            color: #fb0;
+                            font-weight: 900;
+                            font-size: 14px;
+                            &.gray {
+                                color: #ababab;
+                                font-weight: 400;
+                            }
+                        }
+                    }
+                    &.compare-stock {
+                        p {
+                            i {
+                                color: #8cc63e;
+                                font-size: 15px;
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                    &.compare-rating {
+                        span {
+                            font-weight: 700;
+                            font-size: 20px;
+                            color: $theme-color-blue;
+                        }
+                    }
+                    &.compare-btn {
+                        a {
+                            background: #edf4fe;
+                            border-radius: 26px;
+                            display: inline-block;
+                            font-size: 15px;
+                            padding: 12px 41px;
+                            font-weight: 700;
+                            color: $theme-color-blue;
+                            @media #{$md-layout} {
+                                padding: 12px 22px;
+                            }
+                            @media #{$xs-layout} {
+                                padding: 12px 28px;
+                            }
+                            &:hover {
+                                background-color: $theme-color-blue;
+                                color: $white;
+                            }
+                        }
+                    }
+                    p {
+                        font-size: 15px;
+                    }
+                    span {
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media #{$xs-layout} {
+    .compare-page-wrapper {
+        &.pt-90 {
+            padding-top: 20px;
+        }
+    }
+}
+
+/*------ end Compare Page Wrapper -----*/

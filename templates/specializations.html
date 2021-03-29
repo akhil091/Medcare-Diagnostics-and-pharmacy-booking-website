@@ -1,0 +1,71 @@
+{% extends 'basic.html' %}
+{% block content %}
+{% load static %}
+        <div class="breadcrumb-area breadcrumb-area-padding-2 bg-gray-2">
+            <div class="custom-container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li class="active">Specializations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="shop-area pt-75 pb-55">
+            <div class="custom-container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-12">
+                        <div class="shop-bottom-area">
+                            <div class="row" id="specialization">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <script>
+function html1(order){
+    return ('<div class="col-xl-4 col-lg-4 col-md-4 col-12 col-sm-6 mb-30"><div class="single-product-wrap bg-gray-2"><div class="row"><div class="col-xl-6 col-lg-6 col-md-6  col-sm-6 col-6"><div class="product-img-action-wrap circleicon"><div class="product-img "><a href="'+ order.id +'"><img class="default-img" src='+ order.image +' alt="Specialization Image"></a></div></div></div><div class="col-xl-6 col-lg-6 col-md-6  col-sm-6 col-6 "><div class="product-content-wrap "><h2><a href="'+ order.id +'" class="testheading" >'+ order.name +'</a></h2><div class="btn-style-1 pt-10"><a class="font-size-14 btn-1-padding-2 speciality"  href="'+ order.id +'">View Doctors</a></div></div></div></div></div></div>');
+}
+</script>
+<script>
+$(document).ready(function(){
+
+    $.ajax({
+        type: "GET",
+        url: urllink + "/doctor/specialization",
+        dataType: "JSON",
+        success: function (data) {
+            for(var i=0; i<data.length; i++){
+                document.getElementById("specialization").innerHTML += html1(data[i]);
+            }
+        }
+    });
+});
+
+</script>
+<script>
+$(document).ready(function(){
+$(".speciality").on("click", function(e){
+    var pk = this.id;
+    alert(pk);
+    $.ajax({
+        type: "POST",
+        url: urllink + "/doctor/specialization",
+        data: {
+                'pk':pk
+        },
+        dataType: "JSON",
+        success: function (data) {
+            console(data);
+
+        }
+    });
+
+});
+});
+</script>
+{% endblock %}

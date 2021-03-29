@@ -1,0 +1,90 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+
+<div class="breadcrumb-area breadcrumb-area-padding-2 bg-gray-2">
+            <div class="custom-container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="/home">Home</a>
+                        </li>
+                        <li class="active">Log In</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+         <div class="login-register-area pt-75 pb-75">
+            <div class="container">
+                <div class="row">
+                <div class="col-lg-6">
+                <img src="{% static 'icons/undraw_Login_re_4vu2.svg' %}"  width="90%" alt="">
+                </div>
+                    <div class="col-lg-6">
+                        <div class="login-register-wrap login-register-gray-bg">
+                            <div class="login-register-title">
+                                <h1 >LOG IN</h1>
+                            </div>
+                            <div class="login-register-form">
+
+                                <form>
+                                <div class="lost-remember-wrap ">
+
+                                        <div class="lost-wrap pb-20">
+                                            <a href="/signup">Don't have an account? Register</a>
+                                        </div>
+                                    </div>
+                                    <div class="login-register-input-style input-style input-style-white ">
+                                        <label>Phone Number *</label>
+                                        <input type="text" id="phone" value="" required>
+                                    </div>
+
+                                    <div class="login-register-input-style input-style input-style-white">
+                                        <label>Password *</label>
+                                        <input type="password" id="password" value="" required>
+                                    </div>
+                                    <div class="lost-remember-wrap">
+                                        <div class="lost-wrap">
+                                            <a href="#">Lost your password?</a>
+                                        </div>
+                                    </div>
+                                    <div class="login-register-btn">
+                                    <span id="error-message" style="color:red;"></span>
+                                        <button type="submit" id="login">Log in</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        function setCookie(cvalue) {
+            document.cookie = "bToken=" + cvalue + ";path=/";
+        };
+        $("#login").on("click", function(e){
+        e.preventDefault();
+        $.ajax({
+            url  : urllink + "/login",
+            type : "POST",
+            cache:false,
+            data : {
+                'phone': $('#phone').val(),
+                'password': $('#password').val()
+                },
+            success:function(data){
+                window.location="/home";
+                console.log(data);
+                setCookie(data.token);
+            },
+            error: function () {
+                $(".error-message").html("Error");
+            }
+        });
+    });
+});
+</script>
+        {% endblock %}
